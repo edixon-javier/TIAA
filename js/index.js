@@ -73,15 +73,12 @@ FWDR3DCovUtils.onReady(function () {
   // > Create carousel
   new FWDR3DCov({
     // * Main.
-
-    // Carousel size
-    coverflowWidth: 3840, // ! Important
-    coverflowOffsetHeight: 220, // ! Important
-
     instanceName: "fwdr3dcov0",
     coverflowHolderDivId: "coverflow-carousel",
     coverflowDataListDivId: "coverflow-data",
     displayType: "responsive",
+    coverflowWidth: 990,
+    coverflowOffsetHeight: 120,
     thumbnailResizeOffest: 60,
     zIndex: 0,
     mainFolderPath: "coverflow/start/content",
@@ -100,12 +97,6 @@ FWDR3DCovUtils.onReady(function () {
     backgroundImageSize: "auto",
     preloaderBackgroundColor: "#333333",
     preloaderFillColor: "#FFFFFF",
-
-    // * Thumbnails
-    // Thumbnail size
-    thumbnailWidth: 1400, // ! Important
-    thumbnailHeight: 787.5, // ! Important
-
     thumbnailXOffset3D: 100,
     thumbnailXSpace3D: 97,
     thumbnailZOffset3D: 200,
