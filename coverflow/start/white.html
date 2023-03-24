@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Royal 3D Coverflow</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+		
+		<!-- Imports required for the css and js files -->
+		<link rel="stylesheet" type="text/css" href="content/global.css"/>
+		<script type="text/javascript" src="java/FWDR3DCov.js"></script>
+	
+		<!-- Setup coverflow -->
+		<script type="text/javascript">
+			FWDR3DCovUtils.onReady(function(){
+				new FWDR3DCov({
+
+					// Main.
+					instanceName:'fwdr3dcov0',
+					coverflowHolderDivId:"myDiv",
+					coverflowDataListDivId:"coverflowData",
+					displayType:"responsive",
+					coverflowWidth:1600,
+					coverflowOffsetHeight:120,
+					thumbnailResizeOffest:60,
+					zIndex:0,
+					mainFolderPath:"content",
+					skinPath:"skin_white",
+					useVectorIcons:"no",
+					initializeOnlyWhenVisible:"no",
+					coverflowStartPosition:"center",
+					coverflowXRotation:0,
+					rightClickContextMenu:"developer",
+					enableMouseWheelScroll:"no",
+					addKeyboardSupport:"yes",
+					useDragAndSwipe:"yes",
+					backgroundColor:"#f8f8f8",
+					backgroundImage:"",
+					backgroundImageRepeat:'no-repeat',
+					backgroundImageSize:"auto",
+					preloaderBackgroundColor:"#333333",
+					preloaderFillColor:"#FFFFFF",
+
+					// Thumbnails.
+					thumbnailWidth:530,
+					thumbnailHeight:348,
+					thumbnailXOffset3D:82,
+					thumbnailXSpace3D:82,
+					thumbnailZOffset3D:200,
+					thumbnailZSpace3D:93,
+					thumbnailYAngle3D:70,
+					thumbnailHoverOffset:100,
+					thumbnailOffsetY:0,
+					thumbnailBorderSize:0,
+					thumbnailBackgroundColor:"#666666",
+					thumbnailBorderColor1:"#FFFFFF",
+					thumbnailBorderColor2:"#FFFFFF",
+					numberOfThumbnailsToDisplayLeftAndRight:"4",
+					infiniteLoop:"yes",
+					transparentImages:"no",
+					showReflection:"yes",
+					reflectionHeight:60,
+					reflectionDistance:0,
+					reflectionOpacity:.15,
+					showThumbnailsGradient:"yes",
+					thumbnailGradientColor1:"rgba(255, 255, 255, 0)",
+					thumbnailGradientColor2:"rgba(255, 255, 255, .3)",
+					useVideo:"yes",
+					videoAutoPlay:"no",
+					nextVideoAutoPlay:"no",
+					videoAutoPlayText:"Click to unmute",
+					volume:1,
+					showLogo:"yes",
+					logoPath:"content/rl/content/evp/skin/logo.png",
+					logoLink:"",
+					fillEntireVideoScreen:"yes",
+					showDefaultControllerForVimeo:"yes",
+					showScrubberWhenControllerIsHidden:"yes",
+					showVolumeButton:"yes",
+					showTime:"yes",
+					showRewindButton:"no",
+					showQualityButton:"no",
+					showPlaybackRateButton:"yes",
+					showChromecastButton:"no",
+					showFullScreenButton:"yes",
+					showScrubberToolTipLabel:"yes",
+					timeColor:"#B9B9B9",
+					youtubeQualityButtonNormalColor:"#B9B9B9",
+					youtubeQualityButtonSelectedColor:'#FFFFFF',
+					scrubbersToolTipLabelBackgroundColor:'#FFFFFF',
+					scrubbersToolTipLabelFontColor:'#5a5a5a',
+					audioVisualizerLinesColor:'#D60E63',
+					audioVisualizerCircleColor:'#FFFFFF',
+					thumbnailsPreviewWidth:196,
+					thumbnailsPreviewBackgroundColor:'#2e2e2e',
+				    thumbnailsPreviewBorderColor:'#414141',
+					thumbnailsPreviewLabelBackgroundColor:'#414141',
+					thumbnailsPreviewLabelFontColor:'#CCCCCC',
+					skipToVideoText:"You can skip to video in: ",
+					skipToVideoButtonText:"Skip Ad",
+
+					// Controls.
+					controlsMaxWidth:600,
+					controlsOffset:0,
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"no",
+					nextAndPrevButtonsOffsetX:20,
+					showLargeNextAndPrevButtons:"no",
+					largeNextAndPrevButtonsMaxWidthPos:1610,
+					showSlideshowButton:"yes",
+					slideshowAutoplay:"no",
+					slideshowDelay:5,
+					slideshowPreloaderBackgroundColor:"#333333",
+					slideshowPreloaderFillColor:"#FFFFFF",
+					showScrollbar:"yes",
+					showScrollbarOnMobile:"yes",
+					scrollbarHandlerWidth:200,
+					scrollbarTextColorNormal:"#FFFFFF",
+					scrollbarTextColorSelected:"#FFFFFF",
+					showBulletsNavigation:"no",
+					bulletsNormalColor:"#D2D2D2",
+					bulletsSelectedColor:"#333333",
+					bulletsNormalRadius:6,
+					bulletsSelectedRadius:9,
+					spaceBetweenBullets:18,
+												
+					// Caption.
+					showCaption:"yes",
+					captionPosition:"out",
+					captionAnimationType:"motion",
+					showCaptionOnTap:"yes",
+					showFullCaption:"no",
+				
+					// Menu.
+					showMenu:"yes",
+					startAtCategory:1,
+					menuPosition:"topright",
+					selectorLineColor:"#D1D1D1",
+					selectorBackgroundColor:"#EDEDED",
+					selectorTextNormalColor:"#111111",
+					selectorTextSelectedColor:"#111111",
+					buttonBackgroundColor:"#EDEDED",
+					buttonTextNormalColor:"#717171",
+					buttonTextSelectedColor:"#111111",
+					menuHorizontalMargins:12,
+					menuVerticalMargins:12,
+												
+					// Lightbox.
+					useLightbox:"yes",
+					rlUseDeepLinking:"yes",
+					rlItemBackgroundColor:"#212121",
+					rlDefaultItemWidth:1527,
+					rlDefaultItemHeight:859,
+					rlItemOffsetHeight:37,
+					rlItemOffsetHeightButtonsTop:47,
+					rlItemBorderSize:0,
+					rlItemBorderColor:"#FFFFFF",
+					rlMaxZoom:1.2,
+					rlPreloaderBkColor:"#2e2e2e",
+					rlPreloaderFillColor:"#FFFFFF",
+					rlButtonsAlignment:"in",
+					rlButtonsHideDelay:5,
+					rlMediaLazyLoading:"yes",
+					rlUseDrag:"yes",
+					rlUseAsModal:"no",
+					rlShowSlideShowButton:"yes",
+					rlShowSlideShowAnimation:"yes",
+					rlSlideShowAutoPlay:"no",
+					rlSlideShowAutoStop:"no",
+					rlSlideShowDelay:6,
+					rlSlideShowBkColor:"#2e2e2e",
+					rlSlideShowFillColor:"#FFFFFF",
+					rlUseKeyboard:"yes",
+					rlUseDoubleClick:"yes",
+					rlShowCloseButton:"yes",
+					rlShowFullscreenButton:"yes",
+					rlShowZoomButton:"yes",
+					rlShowCounter:"yes",
+					rlShowNextAndPrevBtns:"yes",
+					rlSpaceBetweenBtns:8,
+					rlButtonsOffsetIn:10,
+					rlButtonsOffsetOut:10,
+					rlBackgroundColor:"rgba(0,0,0,.99)",
+					rlShareButtons:['facebook', 'twitter', 'linkedin', 'tumblr', 'pinterest', 'reddit', 'buffer', 'digg','blogger'],
+					rlShareText:"Share on",
+					rlSharedURL:"deeplink",
+					rlShareMainBackgroundColor:"rgba(0,0,0,.4)",
+					rlShareBackgroundColor:"#FFFFFF",
+					rlShowThumbnails:"yes",
+					rlShowThumbnailsIcon:"yes",
+					rlThumbnailsHeight:80,
+					rlThumbnailsOverlayColor:"rgba(0,0,0,.4)",
+					rlThumbnailsBorderSize:2,
+					rlThumbnailsBorderColor:"#FFFFFF",
+					rlSpaceBetweenThumbnailsAndItem:10,
+					rlThumbnailsOffsetBottom:10,
+					rlSpaceBetweenThumbnails:5,
+					rlShowCaption:"yes",
+					rlCaptionPosition:"bottomout",
+					rlShowCaptionOnSmallScreens:"no",
+					rlCaptionAnimationType:"motion",
+					rlUseVideo:"yes",
+					rlFillEntireScreenWithPoster:"yes",
+					rlVolume:1,
+					rlVideoAutoPlay:"no",
+					rlNextVideoAutoPlay:"no",
+					rlVideoAutoPlayText:"Click to unmute",
+					rlShowLogo:"yes",
+					rlLogoPath:"content/rl/content/evp/skin/logo.png",
+					rlLogoLink:"",
+					rlShowDefaultControllerForVimeo:"yes",
+					rlShowScrubberWhenControllerIsHidden:"yes",
+					rlShowRewindButton:"yes",
+					rlShowVolumeButton:"yes",
+					rlShowChromecastButton:"yes",
+					rlShowPlaybackRateButton:"no",
+					rlShowQualityButton:"yes",
+					rlShowFullScreenButton:"yes",
+					rlShowScrubberToolTipLabel:"yes",
+					rlShowTime:"yes",
+					rlTimeColor:"#B9B9B9",
+					rlYoutubeQualityButtonNormalColor:"#B9B9B9",
+					rlYoutubeQualityButtonSelectedColor:"#FFFFFF",
+					rlScrubbersToolTipLabelBackgroundColor:"#FFFFFF",
+					rlScrubbersToolTipLabelFontColor:"#5a5a5a",
+					rlAudioVisualizerLinesColor:"#D60E63",
+					rlAudioVisualizerCircleColor:"#FFFFFF",
+					rlThumbnailsPreviewWidth:196,
+					rlThumbnailsPreviewBackgroundColor:"#2e2e2e",
+					rlThumbnailsPreviewBorderColor:"#414141",
+					rlThumbnailsPreviewLabelBackgroundColor:"#414141",
+					rlThumbnailsPreviewLabelFontColor:"#CCCCCC",
+					rlSkipToVideoText:"You can skip to video in: ",
+					rlSkipToVideoButtonText:"Skip Ad"
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<!-- Div used as a holder for the coverflow -->
+		<div id="myDiv"></div>
+
+		<!-- coverflow data -->
+		<div id="coverflowData" style="display: none;">
+
+			<!-- category  -->
+			<div data-cat="Thumbs video">
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-adsense.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-vast-src="//googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Google Adsense & IMA SDK/Interactive Media Ads</p>
+						<p class="fwdr3dcov-desc">Google Adsense & IMA SDK/Interactive Media Ads support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-GD.jpg" data-thumb-video-src="https://www.googleapis.com/drive/v3/files/1CaDKmLq_Ta_IEPUq7XK7oy7uTppQ2uLj?alt=media&key=AIzaSyCpMiFIS8G-1XrZmYXe9crmqhRM7sWC5js&v=.mp4"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Google Drive And Other Cloud Storage</p>
+						<p class="fwdr3dcov-desc">Google Drive, Dropbox, and pretty much all cloud storage platforms, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+			
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-mp3.jpg" data-thumb-video-src="media/audio/audio.mp3"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-youtube.jpg" data-thumb-video-src="https://www.youtube.com/watch?v=IDZTCLNOfqU"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Youtube</p>
+						<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-hls.jpg" data-thumb-video-src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+						<p class="fwdr3dcov-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-pass.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-password="dd1d878544e988bb644756ca5e0ba56b" data-thumb-preview-src="auto"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Private/Protected Video</p>
+						<p class="fwdr3dcov-desc">Private/password protected videos for all supported video formats, test password is <strong>Meli</strong>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-mp32.jpg" data-thumb-video-src="media/audio/audio.mp3"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-mp4.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">MP4 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-subtitle.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Subtitle Support</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-thumb-preview.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-preview-src="auto"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Thumbnails Preview</p>
+						<p class="fwdr3dcov-desc">Thumbnails live preview auto-generated or generated from a .vtt file, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-cast.jpg" data-thumb-video-src="media/videos/girls.mp4"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Google Chromecast</p>
+						<p class="fwdr3dcov-desc">Google Chromecast support, click the <a href="https://webdesign-flash.ro/p/evp" target="_blank">Chormecast</a> button and connect to your casted device.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-youtube.jpg" data-thumb-video-src="https://www.youtube.com/watch?v=IDZTCLNOfqU"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Youtube</p>
+						<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-mp33.jpg" data-thumb-video-src="media/audio/audio.mp3"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-vimeo.jpg" data-thumb-video-src="https://vimeo.com/307791576"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Vimeo & Vimeo Pro</p>
+						<p class="fwdr3dcov-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-thumb-src="media/thumbnails/cov-vast.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-vast-src="media/vast/VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single (non linear between breaks) Ad.xml"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">VAST & VMAP</p>
+						<p class="fwdr3dcov-desc">VAST/Video Ad Serving Template & VMAP/Video Multiple Ad Playlist support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+			</div> -->
+			<!-- end  -->
+
+			<!-- category  -->
+			<div data-cat="Ligtbox gallery">
+				<ul>
+					<li data-rl-src="media/images/1.jpg"></li>
+					<li data-thumb-src="media/thumbnails/1.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">We Are Taking Friendship Seriously</p>
+						<p class="fwdr3dcov-desc">Friendship has always been morally <a href="https://webdesign-flash.ro" target="_blank">appreciated</a>, though it is particularistic and partial without compromise.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">We Are Taking Friendship Seriously</p>
+						<p class="fwdrl-desc">Friendship has always been morally <a href="https://webdesign-flash.ro" target="_blank">appreciated</a>, though it is particularistic and partial without compromise.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/2.jpg"></li>
+					<li data-thumb-src="media/thumbnails/2.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Jewelry Puzzle Is Fun</p>
+						<p class="fwdr3dcov-desc">Check out our puzzle <a href="https://webdesign-flash.ro" target="_blank">jewelry selection</a> for the very best in unique or custom.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Jewelry Puzzle Is Fun</p>
+						<p class="fwdrl-desc">Check out our puzzle <a href="https://webdesign-flash.ro" target="_blank">jewelry selection</a> for the very best in unique or custom.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/3.jpg"></li>
+					<li data-thumb-src="media/thumbnails/3.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">It's Candy Sparkle Time</p>
+						<p class="fwdr3dcov-desc">Candy do speak, but only to those who <a href="https://webdesign-flash.ro" target="_blank">know how</a> to listen.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">It's Candy Sparkle Time</p>
+						<p class="fwdrl-desc">Candy do speak, but only to those who <a href="https://webdesign-flash.ro" target="_blank">know how</a> to listen.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/4.jpg"></li>
+					<li data-thumb-src="media/thumbnails/4.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Amazing Pink Jellyfish</p>
+						<p class="fwdr3dcov-desc">For the Californian <a href="https://webdesign-flash.ro" target="_blank">species</a> occasionally known by that name but usually called the purple-striped jelly.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Amazing Pink Jellyfish</p>
+						<p class="fwdrl-desc">For the Californian <a href="https://webdesign-flash.ro" target="_blank">species</a> occasionally known by that name but usually called the purple-striped jelly.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/5.jpg"></li>
+					<li data-thumb-src="media/thumbnails/5.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Fluffy Pink Season</p>
+						<p class="fwdr3dcov-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Fluffy Pink Season</p>
+						<p class="fwdrl-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/6.jpg"></li>
+					<li data-thumb-src="media/thumbnails/6.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Asian Fanta Flavors</p>
+						<p class="fwdr3dcov-desc">Japanese Fanta is unlike all <a href="https://webdesign-flash.ro" target="_blank">others</a> around the worldknow how.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Asian Fanta Flavors</p>
+						<p class="fwdrl-desc">Japanese Fanta is unlike all <a href="https://webdesign-flash.ro" target="_blank">others</a> around the worldknow how.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/7.jpg"></li>
+					<li data-thumb-src="media/thumbnails/7.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Rusty Apple Toddy Recipe</p>
+						<p class="fwdr3dcov-desc">Impossible delicious <a href="https://webdesign-flash.ro" target="_blank">recipe</a> with natural flavors.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Rusty Apple Toddy Recipe</p>
+						<p class="fwdrl-desc">Impossible delicious <a href="https://webdesign-flash.ro" target="_blank">recipe</a> with natural flavors.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/8.jpg"></li>
+					<li data-thumb-src="media/thumbnails/8.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Peek A Boo Where Are You :)</p>
+						<p class="fwdr3dcov-desc">Fun storybook for adults about a <a href="https://webdesign-flash.ro" target="_blank">playful cat</a> that likes to hide.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Peek A Boo Where Are You :)</p>
+						<p class="fwdrl-desc">Fun storybook for adults about a <a href="https://webdesign-flash.ro" target="_blank">playful cat</a> that likes to hide.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/9.jpg"></li>
+					<li data-thumb-src="media/thumbnails/9.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Pink Easter Eggs Are Trendy</p>
+						<p class="fwdr3dcov-desc">The current pink quartz and amethyst <a href="https://webdesign-flash.ro" target="_blank">trends</a> have reached beyond the trends.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Pink Easter Eggs Are Trendy</p>
+						<p class="fwdrl-desc">The current pink quartz and amethyst <a href="https://webdesign-flash.ro" target="_blank">trends</a> have reached beyond the trends.</p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-rl-src="media/images/10.jpg"></li>
+					<li data-thumb-src="media/thumbnails/10.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">We Rule in Three</p>
+						<p class="fwdr3dcov-desc">The rule of three is a writing <a href="https://webdesign-flash.ro" target="_blank">principle</a> that suggests that a trio is more humorous.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">We Rule in Three</p>
+						<p class="fwdrl-desc">The rule of three is a writing <a href="https://webdesign-flash.ro" target="_blank">principle</a> that suggests that a trio is more humorous.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/13.jpg"></li>
+					<li data-thumb-src="media/thumbnails/13.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Cute Dogs That Don’t Shed</p>
+						<p class="fwdr3dcov-desc">Not everyone enjoys cleaning up <a href="https://webdesign-flash.ro" target="_blank">copious amounts</a> of dog hair.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Cute Dogs That Don’t Shed</p>
+						<p class="fwdrl-desc">Not everyone enjoys cleaning up <a href="https://webdesign-flash.ro" target="_blank">copious amounts</a> of dog hair.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/14.jpg"></li>
+					<li data-thumb-src="media/thumbnails/14.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Canon Pink Camera</p>
+						<p class="fwdr3dcov-desc">Online shopping for electronics from a <a href="https://webdesign-flash.ro" target="_blank">great selection</a> of digital cameras.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Canon Pink Camera</p>
+						<p class="fwdrl-desc">Online shopping for electronics from a <a href="https://webdesign-flash.ro" target="_blank">great selection</a> of digital cameras.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/12.jpg"></li>
+					<li data-thumb-src="media/thumbnails/12.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Mona Lisa Landscape</p>
+						<p class="fwdr3dcov-desc">Yes there are animals hidden in the <a href="https://webdesign-flash.ro" target="_blank">Mona Lisa</a>, but you don't have to look sideways all the way.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Mona Lisa Landscape</p>
+						<p class="fwdrl-desc">Yes there are animals hidden in the <a href="https://webdesign-flash.ro" target="_blank">Mona Lisa</a>, but you don't have to look sideways all the way.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/15.jpg"></li>
+					<li data-thumb-src="media/thumbnails/15.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Sleeping Beauty</p>
+						<p class="fwdr3dcov-desc">Australian drama film written and directed by <a href="https://webdesign-flash.ro" target="_blank">Julia Leigh</a> in her directorial debut.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Sleeping Beauty</p>
+						<p class="fwdrl-desc">Australian drama film written and directed by <a href="https://webdesign-flash.ro" target="_blank">Julia Leigh</a> in her directorial debut.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/11.jpg"></li>
+					<li data-thumb-src="media/thumbnails/11.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Awesome Screw</p>
+						<p class="fwdr3dcov-desc">Awesome K Screw Gauge <a href="https://webdesign-flash.ro" target="_blank">Micrometer</a> BRASS 25 mm S.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Awesome Screw</p>
+						<p class="fwdrl-desc">Awesome K Screw Gauge <a href="https://webdesign-flash.ro" target="_blank">Micrometer</a> BRASS 25 mm S.</p>
+					</li>
+				</ul>
+			</div>
+			<!-- end  -->
+
+			<!-- category  -->
+			<div data-cat="Lightbox video">
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/adsense.jpg" data-rl-vast-src="//googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on"></li>
+					<li data-thumb-src="media/thumbnails/cov-adsense.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Google Adsense & IMA SDK/Interactive Media Ads</p>
+						<p class="fwdr3dcov-desc">Google Adsense & IMA SDK/Interactive Media Ads support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Google Adsense & IMA SDK/Interactive Media Ads</p>
+						<p class="fwdrl-desc">Google Adsense & IMA SDK/Interactive Media Ads support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="https://www.googleapis.com/drive/v3/files/1CaDKmLq_Ta_IEPUq7XK7oy7uTppQ2uLj?alt=media&key=AIzaSyCpMiFIS8G-1XrZmYXe9crmqhRM7sWC5js&v=.mp4" data-rl-poster-src="media/images/GD.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-GD.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Google Drive And Other Cloud Storage</p>
+						<p class="fwdr3dcov-desc">Google Drive, Dropbox, and pretty much all cloud storage platforms, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Google Drive And Other Cloud Storage</p>
+						<p class="fwdrl-desc">Google Drive, Dropbox, and pretty much all cloud storage platforms, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp3.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp3.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="https://www.youtube.com/watch?v=IDZTCLNOfqU" data-rl-poster-src="media/images/youtube.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-youtube.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Youtube</p>
+						<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Youtube</p>
+						<p class="fwdrl-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+			
+				<ul>
+					<li data-rl-src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" data-rl-poster-src="media/images/hls.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-hls.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox HLS/HTTP Live Streaming & DASH MEPG</p>
+						<p class="fwdr3dcov-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+						<p class="fwdrl-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/pass.jpg" data-rl-password="dd1d878544e988bb644756ca5e0ba56b"></li>
+					<li data-thumb-src="media/thumbnails/cov-pass.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Private/Protected Video</p>
+						<p class="fwdr3dcov-desc">Private/password protected videos, test password is <strong>Meli</strong>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Private/Protected Video</p>
+						<p class="fwdrl-desc">Private/password protected videos, test password is <strong>Meli</strong>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp32.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp32.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp4.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox MP4 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP4 Self Hosted Or External Hosted</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/subtitle.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+					<li data-thumb-src="media/thumbnails/cov-subtitle.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Subtitle Support</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Subtitle Support</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/thumb-preview.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt" data-rl-preview-src="auto"></li>
+					<li data-thumb-src="media/thumbnails/cov-thumb-preview.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Thumbnails Preview</p>
+						<p class="fwdr3dcov-desc">Thumbnails live preview auto-generated or generated from a .vtt file, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Thumbnails Preview</p>
+						<p class="fwdrl-desc">Thumbnails live preview auto-generated or generated from a .vtt file, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/cast.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+					<li data-thumb-src="media/thumbnails/cov-cast.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Google Chromecast</p>
+						<p class="fwdr3dcov-desc">Google Chromecast support, click the <a href="https://webdesign-flash.ro/p/evp" target="_blank">Chormecast</a> button and connect to your casted device.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Google Chromecast</p>
+						<p class="fwdrl-desc">Google Chromecast support, click the <a href="https://webdesign-flash.ro/p/evp" target="_blank">Chormecast</a> button and connect to your casted device.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="https://www.youtube.com/watch?v=IDZTCLNOfqU" data-rl-poster-src="media/images/youtube.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-youtube.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Youtube</p>
+						<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Youtube</p>
+						<p class="fwdrl-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp33.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp33.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-rl-src="https://vimeo.com/307791576" data-rl-poster-src="media/images/vimeo.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-vimeo.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Vimeo & Vimeo Pro</p>
+						<p class="fwdr3dcov-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Vimeo & Vimeo Pro</p>
+						<p class="fwdrl-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/vast.jpg" data-rl-vast-src="media/vast/VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single (non linear between breaks) Ad.xml"></li>
+					<li data-thumb-src="media/thumbnails/cov-vast.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox VAST & VMAP</p>
+						<p class="fwdr3dcov-desc">VAST/Video Ad Serving Template & VMAP/Video Multiple Ad Playlist support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">VAST & VMAP</p>
+						<p class="fwdrl-desc">VAST/Video Ad Serving Template & VMAP/Video Multiple Ad Playlist support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+			</div>
+			<!-- end  -->
+
+			<!-- category  -->
+			<div data-cat="Lightbox mixed">
+				<ul>
+					<li data-rl-src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" data-rl-poster-src="media/images/hls.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-hls.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+						<p class="fwdr3dcov-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+						<p class="fwdrl-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp4.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">MP4 Self/External Hosted With Subtitle</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP4 Self/External Hosted With Subtitle</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/5.jpg"></li>
+					<li data-thumb-src="media/thumbnails/5.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Fluffy Pink Season</p>
+						<p class="fwdr3dcov-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Fluffy Pink Season</p>
+						<p class="fwdrl-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/images/10.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-img.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Image Support</p>
+						<p class="fwdr3dcov-desc">Lightbox image (.jpg, .jpeg, .png) support with advanced features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Lightbox Image Support</p>
+						<p class="fwdrl-desc">Lightbox image (.jpg, .jpeg, .png) support with advanced features.</p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-rl-src="https://www.wikipedia.org/"></li>
+					<li data-thumb-src="media/thumbnails/cov-iframe.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Iframe Support</p>
+						<p class="fwdr3dcov-desc">Embed any HTML page using and Iframe, <a href="https://webdesign-flash.ro/" target="_blank">unlimited possibilities</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Lightbox Iframe Support</p>
+						<p class="fwdrl-desc">Embed any HTML page using and Iframe, <a href="https://webdesign-flash.ro/" target="_blank">unlimited possibilities</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/sample.pdf"></li>
+					<li data-thumb-src="media/thumbnails/cov-pdf.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox PDF Support</p>
+						<p class="fwdr3dcov-desc">Easily display <a href="https://webdesign-flash.ro/" target="_blank">.pdf format</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">PDF Support</p>
+						<p class="fwdrl-desc">Easily display <a href="https://webdesign-flash.ro/" target="_blank">.pdf format</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="html_content" data-rl-width="450" data-rl-height="596"></li>
+					<li data-thumb-src="media/thumbnails/cov-html.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox HTML Content Support</p>
+						<p class="fwdr3dcov-desc">Easily display <a href="https://webdesign-flash.ro/" target="_blank">HTML content</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/cov-link.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Open Page With Custom Link</p>
+						<p class="fwdr3dcov-desc">Open a new page in a new/same window, when clicking the thumbnail.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">CUSTOM TEXT CAN BE ADDED HERE AND FORMATTED WITH CSS</p>
+						<p class="fwdrl-desc">Full css support, the text which appear over the thumbnail can be formatted  with CSS.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="https://www.google.com/maps/embed/v1/place?q=castelul%20hunedoara&key=AIzaSyDYlgLIneg_UOd8STBfJEgq2JgmT5nNJKU"></li>
+					<li data-thumb-src="media/thumbnails/cov-maps.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Google Maps Support</p>
+						<p class="fwdr3dcov-desc">Google maps support using <a href="https://webdesign-flash.ro/" target="_blank">Iframe</a> embed.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Lightbox Google Maps Support</p>
+						<p class="fwdrl-desc">Google maps support using <a href="https://webdesign-flash.ro/" target="_blank">Iframe</a> embed.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp4.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox MP4 Self/External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP4 Self/External Hosted With Subtitle</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="https://vimeo.com/307791576" data-rl-poster-src="media/images/vimeo.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-vimeo.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Vimeo & Vimeo Pro</p>
+						<p class="fwdr3dcov-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Vimeo & Vimeo Pro</p>
+						<p class="fwdrl-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-rl-src="https://www.youtube.com/watch?v=IDZTCLNOfqU" data-rl-poster-src="media/images/youtube.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-youtube.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Youtube</p>
+						<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Youtube</p>
+						<p class="fwdrl-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp3.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp3.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/pass.jpg" data-rl-password="dd1d878544e988bb644756ca5e0ba56b" data-rl-preview-src="auto"></li>
+					<li data-thumb-src="media/thumbnails/cov-pass.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">Lightbox Private/Protected Video With Thumbnails Preview</p>
+						<p class="fwdr3dcov-desc">Private/password protected videos with auto-generated thumbnails preview, test password is <strong>Meli</strong>.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">Private/Protected Video With Thumbnails Preview</p>
+						<p class="fwdrl-desc">Private/password protected videos with auto-generated thumbnails preview, test password is <strong>Meli</strong>.</p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp3.jpg"></li>
+					<li data-thumb-src="media/thumbnails/cov-mp3.jpg"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+					<li data-rl-caption="">
+						<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+						<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+					</li>
+				</ul>
+			</div>
+			<!-- end  -->
+
+		</div>
+
+		<!-- HTML content  -->
+		<div id="html_content" style="display:none">
+			<div class="fwdrl-html-content">
+				<div>
+					<img src="media/images/post.png" width="197" height="162"/>
+					<h1>Sign Up For Our News Letter</h1>
+					<p>Subscribe to join the greatest mailing list.<br>Want to keep up to date with all our last news and information?<br>Enter your email bellow to be added to our mailing list.</p>
+					<input type="text" placeholder="Enter Your Email"></input>
+					<h4>SUBSCRIBE NOW</h4>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
+
+
+
+

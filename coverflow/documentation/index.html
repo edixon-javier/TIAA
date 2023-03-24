@@ -1,0 +1,1902 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Royal 3D Coverflow Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<script type="text/javascript" src="scripts/shCore.js"></script>
+	<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="scripts/shBrushXml.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/fwd.css" type="text/css" >
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+	<link rel="stylesheet" href="assets/blueprint-css/fwd.css" type="text/css">
+</head>
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Royal 3D Coverflow&rdquo; Documentation by FWDesign</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;<span class="center alt">Royal 3D Coverflow</span>&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Version 2.1<br>
+					By:© FWD (FUTURE WEB DESIGN)<br>
+					Email: <a href="mailto:tibi_diablo@yahoo.com">tibi_diablo@yahoo.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing our script. If you have any questions that are beyond the scope of this help file, please feel free to email via our email. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#important">IMPORTANT NOTES - read this before anything else</a></li>
+			<li><a href="#setupThumbnails">Setting up the thumbnails images/html contents</a></li>
+			<li><a href="#instalationResponsiveOrFixed">How to install the coverflow with responsive / fixed width</a></li>
+			<li><a href="#config">Constructor parameters</a></li>
+			<li><a href="#categories">Adding categories</a></li>
+            <li><a href="#datalist">Adding thumbnails</a></li>
+            <li><a href="#skin">Modifying the skin</a></li>
+			<li><a href="#api">API specifications</a></li>
+			<li><a href="#credits">Sources and Credits</a></li>
+		</ol>
+	
+		<hr>
+		
+		<h3 id="important"><strong>A) IMPORTANT NOTES - make sure you read this!</strong> - <a href="#toc">top</a></h3>
+		<p>Before reading forward you should understand how this coverflow works. As you will read installing the coverflow into your html page is straight forward and relative simple. The coverflow is using &lt;ul&gt and &lt;li&gt html elements as the base for the categories (the coverflow supports one or more categories), this way if you like you can generate the content with php or some other server side framework using a database or just add the HTML markup manually.</p>
+		<p>Each thumbnail is displaying an image and optionally display/play a video directly in the thumbnail, or when a thumbnail is clicked a new page can be opened, or open a lightbox that can display various formats like video, audio, Iframe, etc...</p>
+		<p>If you don't want to use video in the coverflow thumbnails please make sure to set useVideo:"no", the same apply to the lightbox, if you don't want to use the lightbox set useLightbox:"no".</p>
+		
+		<h3 id="setupThumbnails"><strong>B) Setting up the thumbnails images/html contents</strong> - <a href="#toc">top</a></h3>
+		<p>Before you start using the coverflow you need to set the thumbnailWidth and thumbnailHeight properties in the coverflow constructor, this two properties represents the thumbnail width and height and make sure you save the images that you want to use at the same width and height with the thumbnailWidth and thumbnailHeight.</p>
+		
+		<p>The 3D setup is configured such that the center thumbnail will have the actual size, and the ones from the left and right will be scaled down depending on thier position in the 3D space.</p>
+		<p>If you find it difficult to understand this rules save your images at the same size as we did in our examples.</p>
+			
+		<h3 id="instalationResponsiveOrFixed"><strong>C) How to install the coverflow with responsive / fixed width</strong> - <a href="#toc">top</a></h3>
+        <ul>
+			<p>Please note that I have used the <strong>dark.html</strong> as reference for this tutorial, this file and other example HTML files are located in the start folder, just open on of them in a text edior and you can easily copy and paste the HTML/JS code.</p>
+			<li>The coverflow is added in a HTML page in a <strong>&lt;div&gt</strong> element. This div element (the coverflow's parent) can be located anywhere inside the page.</li>
+        
+			<li>Add in the same folder with your HTML file the java, content and media folders. The java and content folders contains the required files for the coverflow, the media folder contains the media files (images, videos, audios, etc) that I've used so make sure that you add your own media files and delete the ones that are not used, the media folder is not required but to follow the tutorial it has to be used... the media files (images, videos, audios, etc) can be hosted anywhere in any location.</li>
+			<li>The javascript and css files must be imported, in the head section of your HTML file add the code from below.</li>
+			<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<!-- Import required css and js files -->
+			<link rel="stylesheet" type="text/css" href="content/global.css"/>
+			<script type="text/javascript" src="java/FWDR3DCov.js"></script></pre>
+			<li>Next step is to initialize the coverflow with javascript, in the head section add code from below. Please note that all parameters are required so do not remove any of them just change their value if you want to... all parameters are described in the <a href="#config">constructor parameters</a> section.</li>
+			<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<script type="text/javascript">
+			FWDR3DCovUtils.onReady(function(){
+				new FWDR3DCov({
+
+					// Main.
+					instanceName:'fwdr3dcov0',
+					coverflowHolderDivId:"myDiv",
+					coverflowDataListDivId:"coverflowData",
+					displayType:"responsive",
+					coverflowWidth:1600,
+					coverflowOffsetHeight:120,
+					thumbnailResizeOffest:60,
+					zIndex:0,
+					mainFolderPath:"content",
+					skinPath:"skin_dark",
+					useVectorIcons:"no",
+					initializeOnlyWhenVisible:"no",
+					coverflowStartPosition:"center",
+					coverflowXRotation:0,
+					rightClickContextMenu:"developer",
+					enableMouseWheelScroll:"no",
+					addKeyboardSupport:"yes",
+					useDragAndSwipe:"yes",
+					backgroundColor:"#0b0b0b",
+					backgroundImage:"",
+					backgroundImageRepeat:'no-repeat',
+					backgroundImageSize:"auto",
+					preloaderBackgroundColor:"#333333",
+					preloaderFillColor:"#FFFFFF",
+
+					// Thumbnails.
+					thumbnailWidth:488,
+					thumbnailHeight:320,
+					thumbnailXSpace3D:72,
+					thumbnailXOffset3D:82,
+					thumbnailZSpace3D:60,
+					thumbnailZOffset3D:200,
+					thumbnailYAngle3D:70,
+					thumbnailHoverOffset:100,
+					thumbnailOffsetY:0,
+					thumbnailBorderSize:0,
+					thumbnailBackgroundColor:"#666666",
+					thumbnailBorderColor1:"#FFFFFF",
+					thumbnailBorderColor2:"#FFFFFF",
+					numberOfThumbnailsToDisplayLeftAndRight:"4",
+					infiniteLoop:"yes",
+					transparentImages:"no",
+					showReflection:"yes",
+					reflectionHeight:50,
+					reflectionDistance:0,
+					reflectionOpacity:.4,
+					showThumbnailsGradient:"yes",
+					thumbnailGradientColor1:"rgba(11, 11, 11, 0)",
+					thumbnailGradientColor2:"rgba(11, 11, 11, 1)",
+					useVideo:"yes",
+					videoAutoPlay:"no",
+					nextVideoAutoPlay:"no",
+					videoAutoPlayText:"Click to unmute",
+					volume:1,
+					showLogo:"yes",
+					logoPath:"content/rl/content/evp/skin/logo.png",
+					logoLink:"",
+					fillEntireVideoScreen:"yes",
+					showDefaultControllerForVimeo:"yes",
+					showScrubberWhenControllerIsHidden:"yes",
+					showVolumeButton:"yes",
+					showTime:"yes",
+					showRewindButton:"no",
+					showQualityButton:"no",
+					showPlaybackRateButton:"yes",
+					showChromecastButton:"yes",
+					showFullScreenButton:"yes",
+					showScrubberToolTipLabel:"yes",
+					timeColor:"#B9B9B9",
+					youtubeQualityButtonNormalColor:"#B9B9B9",
+					youtubeQualityButtonSelectedColor:'#FFFFFF',
+					scrubbersToolTipLabelBackgroundColor:'#FFFFFF',
+					scrubbersToolTipLabelFontColor:'#5a5a5a',
+					audioVisualizerLinesColor:'#D60E63',
+					audioVisualizerCircleColor:'#FFFFFF',
+					thumbnailsPreviewWidth:196,
+					thumbnailsPreviewBackgroundColor:'#2e2e2e',
+				    thumbnailsPreviewBorderColor:'#414141',
+					thumbnailsPreviewLabelBackgroundColor:'#414141',
+					thumbnailsPreviewLabelFontColor:'#CCCCCC',
+					skipToVideoText:"You can skip to video in: ",
+					skipToVideoButtonText:"Skip Ad",
+
+					// Controls.
+					controlsMaxWidth:600,
+					controlsOffset:0,
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"no",
+					nextAndPrevButtonsOffsetX:20,
+					showLargeNextAndPrevButtons:"no",
+					largeNextAndPrevButtonsMaxWidthPos:1520,
+					showSlideshowButton:"yes",
+					slideshowAutoplay:"no",
+					slideshowDelay:5,
+					slideshowPreloaderBackgroundColor:"#333333",
+					slideshowPreloaderFillColor:"#FFFFFF",
+					showScrollbar:"yes",
+					showScrollbarOnMobile:"yes",
+					scrollbarHandlerWidth:200,
+					scrollbarTextColorNormal:"#FFFFFF",
+					scrollbarTextColorSelected:"#111111",
+					showBulletsNavigation:"no",
+					bulletsNormalColor:"#333333",
+					bulletsSelectedColor:"#FFFFFF",
+					bulletsNormalRadius:6,
+					bulletsSelectedRadius:9,
+					spaceBetweenBullets:18,
+												
+					// Caption.
+					showCaption:"yes",
+					captionPosition:"out",
+					captionAnimationType:"motion",
+					showCaptionOnTap:"yes",
+					showFullCaption:"no",
+				
+					// Menu.
+					showMenu:"yes",
+					startAtCategory:1,
+					menuPosition:"topright",
+					selectorLineColor:"#333333",
+					selectorBackgroundColor:"#1F1F1F",
+					selectorTextNormalColor:"#FFFFFF",
+					selectorTextSelectedColor:"#FFFFFF",
+					buttonBackgroundColor:"#1F1F1F",
+					buttonTextNormalColor:"#8F8F8F",
+					buttonTextSelectedColor:"#FFFFFF",
+					menuHorizontalMargins:12,
+					menuVerticalMargins:12,
+												
+					// Lightbox.
+					useLightbox:"yes",
+					rlUseDeepLinking:"yes",
+					rlItemBackgroundColor:"#212121",
+					rlDefaultItemWidth:1527,
+					rlDefaultItemHeight:859,
+					rlItemOffsetHeight:37,
+					rlItemOffsetHeightButtonsTop:47,
+					rlItemBorderSize:0,
+					rlItemBorderColor:"#FFFFFF",
+					rlMaxZoom:1.2,
+					rlPreloaderBkColor:"#2e2e2e",
+					rlPreloaderFillColor:"#FFFFFF",
+					rlButtonsAlignment:"in",
+					rlButtonsHideDelay:5,
+					rlMediaLazyLoading:"yes",
+					rlUseDrag:"yes",
+					rlUseAsModal:"no",
+					rlShowSlideShowButton:"yes",
+					rlShowSlideShowAnimation:"yes",
+					rlSlideShowAutoPlay:"no",
+					rlSlideShowAutoStop:"no",
+					rlSlideShowDelay:6,
+					rlSlideShowBkColor:"#2e2e2e",
+					rlSlideShowFillColor:"#FFFFFF",
+					rlUseKeyboard:"yes",
+					rlUseDoubleClick:"yes",
+					rlShowCloseButton:"yes",
+					rlShowFullscreenButton:"yes",
+					rlShowZoomButton:"yes",
+					rlShowCounter:"yes",
+					rlShowNextAndPrevBtns:"yes",
+					rlSpaceBetweenBtns:8,
+					rlButtonsOffsetIn:10,
+					rlButtonsOffsetOut:10,
+					rlBackgroundColor:"rgba(0,0,0,.99)",
+					rlShareButtons:['facebook', 'twitter', 'linkedin', 'tumblr', 'pinterest', 'reddit', 'buffer', 'digg','blogger'],
+					rlShareText:"Share on",
+					rlSharedURL:"deeplink",
+					rlShareMainBackgroundColor:"rgba(0,0,0,.4)",
+					rlShareBackgroundColor:"#FFFFFF",
+					rlShowThumbnails:"yes",
+					rlShowThumbnailsIcon:"yes",
+					rlThumbnailsHeight:80,
+					rlThumbnailsOverlayColor:"rgba(0,0,0,.4)",
+					rlThumbnailsBorderSize:2,
+					rlThumbnailsBorderColor:"#FFFFFF",
+					rlSpaceBetweenThumbnailsAndItem:10,
+					rlThumbnailsOffsetBottom:10,
+					rlSpaceBetweenThumbnails:5,
+					rlShowCaption:"yes",
+					rlCaptionPosition:"bottomout",
+					rlShowCaptionOnSmallScreens:"no",
+					rlCaptionAnimationType:"motion",
+					rlUseVideo:"yes",
+					rlFillEntireScreenWithPoster:"yes",
+					rlVolume:1,
+					rlVideoAutoPlay:"no",
+					rlNextVideoAutoPlay:"no",
+					rlVideoAutoPlayText:"Click to unmute",
+					rlShowLogo:"yes",
+					rlLogoPath:"content/rl/content/evp/skin/logo.png",
+					rlLogoLink:"",
+					rlShowDefaultControllerForVimeo:"yes",
+					rlShowScrubberWhenControllerIsHidden:"yes",
+					rlShowRewindButton:"yes",
+					rlShowVolumeButton:"yes",
+					rlShowChromecastButton:"yes",
+					rlShowPlaybackRateButton:"no",
+					rlShowQualityButton:"yes",
+					rlShowFullScreenButton:"yes",
+					rlShowScrubberToolTipLabel:"yes",
+					rlShowTime:"yes",
+					rlTimeColor:"#B9B9B9",
+					rlYoutubeQualityButtonNormalColor:"#B9B9B9",
+					rlYoutubeQualityButtonSelectedColor:"#FFFFFF",
+					rlScrubbersToolTipLabelBackgroundColor:"#FFFFFF",
+					rlScrubbersToolTipLabelFontColor:"#5a5a5a",
+					rlAudioVisualizerLinesColor:"#D60E63",
+					rlAudioVisualizerCircleColor:"#FFFFFF",
+					rlThumbnailsPreviewWidth:198,
+					rlThumbnailsPreviewBackgroundColor:"#2e2e2e",
+					rlThumbnailsPreviewBorderColor:"#414141",
+					rlThumbnailsPreviewLabelBackgroundColor:"#414141",
+					rlThumbnailsPreviewLabelFontColor:"#CCCCCC",
+					rlSkipToVideoText:"You can skip to video in: ",
+					rlSkipToVideoButtonText:"Skip Ad"
+				});	
+			});
+			</script></pre>
+			<li>You need a <strong>&lt;div&gt</strong> element into which the coverflow will be added as a child. This div element (the coverflow's parent) can be located anywhere inside the page, so create a div and set an id for it, the id is important because it is passed in the coverflow constructor, make sure it is unique.</li>
+			<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<!-- Div used as a holder for the coverflow -->
+			<div id="myDiv"></div>
+			</pre>
+			<li>The <strong>skinPath</strong> is the relative path to the folder that contains all the skin graphics image files if the graphics/.png is used and mainFolderPath contains everything else required by the coverflow.</li>
+			<li>Next step is to add the in the body element an <strong>&lt;div&gt</strong> element which represents the coverflow datalist, this  div element must have an unique id which is passed in the constructor. Inside this div the coverflow categories are constructed. This is best illustrated  below. To add categories just copy and paste an <strong>&lt;div&gt</strong> element with an attribute <strong>data-cat</strong>. Make sure you read the <a href="#datalist">coverflow datalist</a> section to understand how to add more cateogries, thumbnails and configure the coverflow datalist.</li>
+			<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+<!-- coverflow data -->
+<div id="coverflowData" style="display: none;">
+
+	<!-- category  -->
+	<div data-cat="Thumbs video">
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-adsense.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-vast-src="//googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Google Adsense & IMA SDK/Interactive Media Ads</p>
+				<p class="fwdr3dcov-desc">Google Adsense & IMA SDK/Interactive Media Ads support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-GD.jpg" data-thumb-video-src="https://www.googleapis.com/drive/v3/files/1CaDKmLq_Ta_IEPUq7XK7oy7uTppQ2uLj?alt=media&key=AIzaSyCpMiFIS8G-1XrZmYXe9crmqhRM7sWC5js&v=.mp4"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Google Drive And Other Cloud Storage</p>
+				<p class="fwdr3dcov-desc">Google Drive, Dropbox, and pretty much all cloud storage platforms, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-mp3.jpg" data-thumb-video-src="media/audio/audio.mp3"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-youtube.jpg" data-thumb-video-src="https://www.youtube.com/watch?v=IDZTCLNOfqU"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Youtube</p>
+				<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-hls.jpg" data-thumb-video-src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+				<p class="fwdr3dcov-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-pass.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-password="dd1d878544e988bb644756ca5e0ba56b" data-thumb-preview-src="auto"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Private/Protected Video</p>
+				<p class="fwdr3dcov-desc">Private/password protected videos for all supported video formats, test password is <strong>Meli</strong>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-mp32.jpg" data-thumb-video-src="media/audio/audio.mp3"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-mp4.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">MP4 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-subtitle.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Subtitle Support</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-thumb-preview.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-preview-src="auto"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Thumbnails Preview</p>
+				<p class="fwdr3dcov-desc">Thumbnails live preview auto-generated or generated from a .vtt file, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-cast.jpg" data-thumb-video-src="media/videos/girls.mp4"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Google Chromecast</p>
+				<p class="fwdr3dcov-desc">Google Chromecast support, click the <a href="https://webdesign-flash.ro/p/evp" target="_blank">Chormecast</a> button and connect to your casted device.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-youtube.jpg" data-thumb-video-src="https://www.youtube.com/watch?v=IDZTCLNOfqU"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Youtube</p>
+				<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-mp33.jpg" data-thumb-video-src="media/audio/audio.mp3"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+		
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-vimeo.jpg" data-thumb-video-src="https://vimeo.com/307791576"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Vimeo & Vimeo Pro</p>
+				<p class="fwdr3dcov-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+		
+		<ul>
+			<li data-thumb-src="media/thumbnails/cov-vast.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-vast-src="media/vast/VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single (non linear between breaks) Ad.xml"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">VAST & VMAP</p>
+				<p class="fwdr3dcov-desc">VAST/Video Ad Serving Template & VMAP/Video Multiple Ad Playlist support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+	</div> -->
+	<!-- end  -->
+
+	<!-- category  -->
+	<div data-cat="Ligtbox gallery">
+		<ul>
+			<li data-rl-src="media/images/1.jpg"></li>
+			<li data-thumb-src="media/thumbnails/1.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">We Are Taking Friendship Seriously</p>
+				<p class="fwdr3dcov-desc">Friendship has always been morally <a href="https://webdesign-flash.ro" target="_blank">appreciated</a>, though it is particularistic and partial without compromise.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">We Are Taking Friendship Seriously</p>
+				<p class="fwdrl-desc">Friendship has always been morally <a href="https://webdesign-flash.ro" target="_blank">appreciated</a>, though it is particularistic and partial without compromise.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/2.jpg"></li>
+			<li data-thumb-src="media/thumbnails/2.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Jewelry Puzzle Is Fun</p>
+				<p class="fwdr3dcov-desc">Check out our puzzle <a href="https://webdesign-flash.ro" target="_blank">jewelry selection</a> for the very best in unique or custom.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Jewelry Puzzle Is Fun</p>
+				<p class="fwdrl-desc">Check out our puzzle <a href="https://webdesign-flash.ro" target="_blank">jewelry selection</a> for the very best in unique or custom.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/3.jpg"></li>
+			<li data-thumb-src="media/thumbnails/3.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">It's Candy Sparkle Time</p>
+				<p class="fwdr3dcov-desc">Candy do speak, but only to those who <a href="https://webdesign-flash.ro" target="_blank">know how</a> to listen.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">It's Candy Sparkle Time</p>
+				<p class="fwdrl-desc">Candy do speak, but only to those who <a href="https://webdesign-flash.ro" target="_blank">know how</a> to listen.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/4.jpg"></li>
+			<li data-thumb-src="media/thumbnails/4.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Amazing Pink Jellyfish</p>
+				<p class="fwdr3dcov-desc">For the Californian <a href="https://webdesign-flash.ro" target="_blank">species</a> occasionally known by that name but usually called the purple-striped jelly.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Amazing Pink Jellyfish</p>
+				<p class="fwdrl-desc">For the Californian <a href="https://webdesign-flash.ro" target="_blank">species</a> occasionally known by that name but usually called the purple-striped jelly.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/5.jpg"></li>
+			<li data-thumb-src="media/thumbnails/5.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Fluffy Pink Season</p>
+				<p class="fwdr3dcov-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Fluffy Pink Season</p>
+				<p class="fwdrl-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/6.jpg"></li>
+			<li data-thumb-src="media/thumbnails/6.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Asian Fanta Flavors</p>
+				<p class="fwdr3dcov-desc">Japanese Fanta is unlike all <a href="https://webdesign-flash.ro" target="_blank">others</a> around the worldknow how.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Asian Fanta Flavors</p>
+				<p class="fwdrl-desc">Japanese Fanta is unlike all <a href="https://webdesign-flash.ro" target="_blank">others</a> around the worldknow how.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/7.jpg"></li>
+			<li data-thumb-src="media/thumbnails/7.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Rusty Apple Toddy Recipe</p>
+				<p class="fwdr3dcov-desc">Impossible delicious <a href="https://webdesign-flash.ro" target="_blank">recipe</a> with natural flavors.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Rusty Apple Toddy Recipe</p>
+				<p class="fwdrl-desc">Impossible delicious <a href="https://webdesign-flash.ro" target="_blank">recipe</a> with natural flavors.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/8.jpg"></li>
+			<li data-thumb-src="media/thumbnails/8.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Peek A Boo Where Are You :)</p>
+				<p class="fwdr3dcov-desc">Fun storybook for adults about a <a href="https://webdesign-flash.ro" target="_blank">playful cat</a> that likes to hide.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Peek A Boo Where Are You :)</p>
+				<p class="fwdrl-desc">Fun storybook for adults about a <a href="https://webdesign-flash.ro" target="_blank">playful cat</a> that likes to hide.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/9.jpg"></li>
+			<li data-thumb-src="media/thumbnails/9.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Pink Easter Eggs Are Trendy</p>
+				<p class="fwdr3dcov-desc">The current pink quartz and amethyst <a href="https://webdesign-flash.ro" target="_blank">trends</a> have reached beyond the trends.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Pink Easter Eggs Are Trendy</p>
+				<p class="fwdrl-desc">The current pink quartz and amethyst <a href="https://webdesign-flash.ro" target="_blank">trends</a> have reached beyond the trends.</p>
+			</li>
+		</ul>
+		
+		<ul>
+			<li data-rl-src="media/images/10.jpg"></li>
+			<li data-thumb-src="media/thumbnails/10.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">We Rule in Three</p>
+				<p class="fwdr3dcov-desc">The rule of three is a writing <a href="https://webdesign-flash.ro" target="_blank">principle</a> that suggests that a trio is more humorous.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">We Rule in Three</p>
+				<p class="fwdrl-desc">The rule of three is a writing <a href="https://webdesign-flash.ro" target="_blank">principle</a> that suggests that a trio is more humorous.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/13.jpg"></li>
+			<li data-thumb-src="media/thumbnails/13.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Cute Dogs That Don’t Shed</p>
+				<p class="fwdr3dcov-desc">Not everyone enjoys cleaning up <a href="https://webdesign-flash.ro" target="_blank">copious amounts</a> of dog hair.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Cute Dogs That Don’t Shed</p>
+				<p class="fwdrl-desc">Not everyone enjoys cleaning up <a href="https://webdesign-flash.ro" target="_blank">copious amounts</a> of dog hair.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/14.jpg"></li>
+			<li data-thumb-src="media/thumbnails/14.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Canon Pink Camera</p>
+				<p class="fwdr3dcov-desc">Online shopping for electronics from a <a href="https://webdesign-flash.ro" target="_blank">great selection</a> of digital cameras.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Canon Pink Camera</p>
+				<p class="fwdrl-desc">Online shopping for electronics from a <a href="https://webdesign-flash.ro" target="_blank">great selection</a> of digital cameras.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/12.jpg"></li>
+			<li data-thumb-src="media/thumbnails/12.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Mona Lisa Landscape</p>
+				<p class="fwdr3dcov-desc">Yes there are animals hidden in the <a href="https://webdesign-flash.ro" target="_blank">Mona Lisa</a>, but you don't have to look sideways all the way.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Mona Lisa Landscape</p>
+				<p class="fwdrl-desc">Yes there are animals hidden in the <a href="https://webdesign-flash.ro" target="_blank">Mona Lisa</a>, but you don't have to look sideways all the way.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/15.jpg"></li>
+			<li data-thumb-src="media/thumbnails/15.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Sleeping Beauty</p>
+				<p class="fwdr3dcov-desc">Australian drama film written and directed by <a href="https://webdesign-flash.ro" target="_blank">Julia Leigh</a> in her directorial debut.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Sleeping Beauty</p>
+				<p class="fwdrl-desc">Australian drama film written and directed by <a href="https://webdesign-flash.ro" target="_blank">Julia Leigh</a> in her directorial debut.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/11.jpg"></li>
+			<li data-thumb-src="media/thumbnails/11.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Awesome Screw</p>
+				<p class="fwdr3dcov-desc">Awesome K Screw Gauge <a href="https://webdesign-flash.ro" target="_blank">Micrometer</a> BRASS 25 mm S.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Awesome Screw</p>
+				<p class="fwdrl-desc">Awesome K Screw Gauge <a href="https://webdesign-flash.ro" target="_blank">Micrometer</a> BRASS 25 mm S.</p>
+			</li>
+		</ul>
+	</div>
+	<!-- end  -->
+
+	<!-- category  -->
+	<div data-cat="Lightbox video">
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/adsense.jpg" data-rl-vast-src="//googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on"></li>
+			<li data-thumb-src="media/thumbnails/cov-adsense.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Google Adsense & IMA SDK/Interactive Media Ads</p>
+				<p class="fwdr3dcov-desc">Google Adsense & IMA SDK/Interactive Media Ads support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Google Adsense & IMA SDK/Interactive Media Ads</p>
+				<p class="fwdrl-desc">Google Adsense & IMA SDK/Interactive Media Ads support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="https://www.googleapis.com/drive/v3/files/1CaDKmLq_Ta_IEPUq7XK7oy7uTppQ2uLj?alt=media&key=AIzaSyCpMiFIS8G-1XrZmYXe9crmqhRM7sWC5js&v=.mp4" data-rl-poster-src="media/images/GD.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-GD.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Google Drive And Other Cloud Storage</p>
+				<p class="fwdr3dcov-desc">Google Drive, Dropbox, and pretty much all cloud storage platforms, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Google Drive And Other Cloud Storage</p>
+				<p class="fwdrl-desc">Google Drive, Dropbox, and pretty much all cloud storage platforms, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp3.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp3.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="https://www.youtube.com/watch?v=IDZTCLNOfqU" data-rl-poster-src="media/images/youtube.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-youtube.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Youtube</p>
+				<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Youtube</p>
+				<p class="fwdrl-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" data-rl-poster-src="media/images/hls.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-hls.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox HLS/HTTP Live Streaming & DASH MEPG</p>
+				<p class="fwdr3dcov-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+				<p class="fwdrl-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/pass.jpg" data-rl-password="dd1d878544e988bb644756ca5e0ba56b"></li>
+			<li data-thumb-src="media/thumbnails/cov-pass.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Private/Protected Video</p>
+				<p class="fwdr3dcov-desc">Private/password protected videos, test password is <strong>Meli</strong>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Private/Protected Video</p>
+				<p class="fwdrl-desc">Private/password protected videos, test password is <strong>Meli</strong>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp32.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp32.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp4.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox MP4 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP4 Self Hosted Or External Hosted</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/subtitle.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+			<li data-thumb-src="media/thumbnails/cov-subtitle.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Subtitle Support</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Subtitle Support</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/thumb-preview.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt" data-rl-preview-src="auto"></li>
+			<li data-thumb-src="media/thumbnails/cov-thumb-preview.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Thumbnails Preview</p>
+				<p class="fwdr3dcov-desc">Thumbnails live preview auto-generated or generated from a .vtt file, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Thumbnails Preview</p>
+				<p class="fwdrl-desc">Thumbnails live preview auto-generated or generated from a .vtt file, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/cast.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+			<li data-thumb-src="media/thumbnails/cov-cast.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Google Chromecast</p>
+				<p class="fwdr3dcov-desc">Google Chromecast support, click the <a href="https://webdesign-flash.ro/p/evp" target="_blank">Chormecast</a> button and connect to your casted device.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Google Chromecast</p>
+				<p class="fwdrl-desc">Google Chromecast support, click the <a href="https://webdesign-flash.ro/p/evp" target="_blank">Chormecast</a> button and connect to your casted device.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="https://www.youtube.com/watch?v=IDZTCLNOfqU" data-rl-poster-src="media/images/youtube.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-youtube.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Youtube</p>
+				<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Youtube</p>
+				<p class="fwdrl-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp33.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp33.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+		
+		<ul>
+			<li data-rl-src="https://vimeo.com/307791576" data-rl-poster-src="media/images/vimeo.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-vimeo.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Vimeo & Vimeo Pro</p>
+				<p class="fwdr3dcov-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Vimeo & Vimeo Pro</p>
+				<p class="fwdrl-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+		
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/vast.jpg" data-rl-vast-src="media/vast/VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single (non linear between breaks) Ad.xml"></li>
+			<li data-thumb-src="media/thumbnails/cov-vast.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox VAST & VMAP</p>
+				<p class="fwdr3dcov-desc">VAST/Video Ad Serving Template & VMAP/Video Multiple Ad Playlist support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">VAST & VMAP</p>
+				<p class="fwdrl-desc">VAST/Video Ad Serving Template & VMAP/Video Multiple Ad Playlist support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+	</div>
+	<!-- end  -->
+
+	<!-- category  -->
+	<div data-cat="Lightbox mixed">
+		<ul>
+			<li data-rl-src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" data-rl-poster-src="media/images/hls.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-hls.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+				<p class="fwdr3dcov-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">HLS/HTTP Live Streaming & DASH MEPG</p>
+				<p class="fwdrl-desc">Support for the HLS/HTTP Live Streaming and DASH MPEG formats, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp4.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">MP4 Self/External Hosted With Subtitle</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP4 Self/External Hosted With Subtitle</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/5.jpg"></li>
+			<li data-thumb-src="media/thumbnails/5.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Fluffy Pink Season</p>
+				<p class="fwdr3dcov-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Fluffy Pink Season</p>
+				<p class="fwdrl-desc">Well, fluffy shirts are, <a href="https://webdesign-flash.ro" target="_blank">by definition</a>, very comfortable.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/images/10.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-img.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Image Support</p>
+				<p class="fwdr3dcov-desc">Lightbox image (.jpg, .jpeg, .png) support with advanced features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Lightbox Image Support</p>
+				<p class="fwdrl-desc">Lightbox image (.jpg, .jpeg, .png) support with advanced features.</p>
+			</li>
+		</ul>
+		
+		<ul>
+			<li data-rl-src="https://www.wikipedia.org/"></li>
+			<li data-thumb-src="media/thumbnails/cov-iframe.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Iframe Support</p>
+				<p class="fwdr3dcov-desc">Embed any HTML page using and Iframe, <a href="https://webdesign-flash.ro/" target="_blank">unlimited possibilities</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Lightbox Iframe Support</p>
+				<p class="fwdrl-desc">Embed any HTML page using and Iframe, <a href="https://webdesign-flash.ro/" target="_blank">unlimited possibilities</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/sample.pdf"></li>
+			<li data-thumb-src="media/thumbnails/cov-pdf.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox PDF Support</p>
+				<p class="fwdr3dcov-desc">Easily display <a href="https://webdesign-flash.ro/" target="_blank">.pdf format</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">PDF Support</p>
+				<p class="fwdrl-desc">Easily display <a href="https://webdesign-flash.ro/" target="_blank">.pdf format</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="html_content" data-rl-width="450" data-rl-height="596"></li>
+			<li data-thumb-src="media/thumbnails/cov-html.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox HTML Content Support</p>
+				<p class="fwdr3dcov-desc">Easily display <a href="https://webdesign-flash.ro/" target="_blank">HTML content</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+			<li data-thumb-src="media/thumbnails/cov-link.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Open Page With Custom Link</p>
+				<p class="fwdr3dcov-desc">Open a new page in a new/same window, when clicking the thumbnail.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">CUSTOM TEXT CAN BE ADDED HERE AND FORMATTED WITH CSS</p>
+				<p class="fwdrl-desc">Full css support, the text which appear over the thumbnail can be formatted  with CSS.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="https://www.google.com/maps/embed/v1/place?q=castelul%20hunedoara&key=AIzaSyDYlgLIneg_UOd8STBfJEgq2JgmT5nNJKU"></li>
+			<li data-thumb-src="media/thumbnails/cov-maps.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Google Maps Support</p>
+				<p class="fwdr3dcov-desc">Google maps support using <a href="https://webdesign-flash.ro/" target="_blank">Iframe</a> embed.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Lightbox Google Maps Support</p>
+				<p class="fwdrl-desc">Google maps support using <a href="https://webdesign-flash.ro/" target="_blank">Iframe</a> embed.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp4.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox MP4 Self/External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP4 Self/External Hosted With Subtitle</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href="https://webdesign-flash.ro/p/evp" target="_blank">Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="https://vimeo.com/307791576" data-rl-poster-src="media/images/vimeo.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-vimeo.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Vimeo & Vimeo Pro</p>
+				<p class="fwdr3dcov-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Vimeo & Vimeo Pro</p>
+				<p class="fwdrl-desc">Vimeo & Vimeo Pro support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+		
+		<ul>
+			<li data-rl-src="https://www.youtube.com/watch?v=IDZTCLNOfqU" data-rl-poster-src="media/images/youtube.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-youtube.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Youtube</p>
+				<p class="fwdr3dcov-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Youtube</p>
+				<p class="fwdrl-desc">Youtube support, <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp3.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp3.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/pass.jpg" data-rl-password="dd1d878544e988bb644756ca5e0ba56b" data-rl-preview-src="auto"></li>
+			<li data-thumb-src="media/thumbnails/cov-pass.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">Lightbox Private/Protected Video With Thumbnails Preview</p>
+				<p class="fwdr3dcov-desc">Private/password protected videos with auto-generated thumbnails preview, test password is <strong>Meli</strong>.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">Private/Protected Video With Thumbnails Preview</p>
+				<p class="fwdrl-desc">Private/password protected videos with auto-generated thumbnails preview, test password is <strong>Meli</strong>.</p>
+			</li>
+		</ul>
+
+		<ul>
+			<li data-rl-src="media/audio/audio.mp3" data-rl-poster-src="media/images/mp3.jpg"></li>
+			<li data-thumb-src="media/thumbnails/cov-mp3.jpg"></li>
+			<li data-thumb-caption="" data-thumb-caption-offset="70">
+				<p class="fwdr3dcov-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdr3dcov-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+			<li data-rl-caption="">
+				<p class="fwdrl-title">MP3 Self Hosted Or External Hosted</p>
+				<p class="fwdrl-desc">Royal 3D Coverflow has included <a href='https://webdesign-flash.ro/p/evp' target='_blank'>Easy Video Player</a> with amazing features.</p>
+			</li>
+		</ul>
+</div>
+<!-- end  -->
+
+</div></pre>
+			<li>These are all the steps needed to setup the coverflow, again all this code is located in the "start" folder in the example html files so you can copy and paste the code easily without errors. Please make sure to read the <a href="#config">constructor parameters</a> section to understand all the coverflow properties.</li>
+         </ul>   
+
+		<br>
+		<h3 id="config"><strong>D) Constructor parameters</strong> - <a href="#toc">top</a></h3>
+		<p>These parameters represent the possible settings for the coverflow, they are all visible below:</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<script type="text/javascript">
+			FWDR3DCovUtils.onReady(function(){
+				new FWDR3DCov({
+
+					// Main.
+					instanceName:'fwdr3dcov0',
+					coverflowHolderDivId:"myDiv",
+					coverflowDataListDivId:"coverflowData",
+					displayType:"responsive",
+					coverflowWidth:1600,
+					coverflowOffsetHeight:120,
+					thumbnailResizeOffest:60,
+					zIndex:0,
+					mainFolderPath:"content",
+					skinPath:"skin_dark",
+					useVectorIcons:"no",
+					initializeOnlyWhenVisible:"no",
+					coverflowStartPosition:"center",
+					coverflowXRotation:0,
+					rightClickContextMenu:"developer",
+					enableMouseWheelScroll:"no",
+					addKeyboardSupport:"yes",
+					useDragAndSwipe:"yes",
+					backgroundColor:"#0b0b0b",
+					backgroundImage:"",
+					backgroundImageRepeat:'no-repeat',
+					backgroundImageSize:"auto",
+					preloaderBackgroundColor:"#333333",
+					preloaderFillColor:"#FFFFFF",
+
+					// Thumbnails.
+					thumbnailWidth:488,
+					thumbnailHeight:320,
+					thumbnailXSpace3D:72,
+					thumbnailXOffset3D:82,
+					thumbnailZSpace3D:60,
+					thumbnailZOffset3D:200,
+					thumbnailYAngle3D:70,
+					thumbnailHoverOffset:100,
+					thumbnailOffsetY:0,
+					thumbnailBorderSize:0,
+					thumbnailBackgroundColor:"#666666",
+					thumbnailBorderColor1:"#FFFFFF",
+					thumbnailBorderColor2:"#FFFFFF",
+					numberOfThumbnailsToDisplayLeftAndRight:"4",
+					infiniteLoop:"yes",
+					transparentImages:"no",
+					showReflection:"yes",
+					reflectionHeight:50,
+					reflectionDistance:0,
+					reflectionOpacity:.4,
+					showThumbnailsGradient:"yes",
+					thumbnailGradientColor1:"rgba(11, 11, 11, 0)",
+					thumbnailGradientColor2:"rgba(11, 11, 11, 1)",
+					useVideo:"yes",
+					videoAutoPlay:"no",
+					nextVideoAutoPlay:"no",
+					videoAutoPlayText:"Click to unmute",
+					volume:1,
+					showLogo:"yes",
+					logoPath:"content/rl/content/evp/skin/logo.png",
+					logoLink:"",
+					fillEntireVideoScreen:"yes",
+					showDefaultControllerForVimeo:"yes",
+					showScrubberWhenControllerIsHidden:"yes",
+					showVolumeButton:"yes",
+					showTime:"yes",
+					showRewindButton:"no",
+					showQualityButton:"no",
+					showPlaybackRateButton:"yes",
+					showChromecastButton:"yes",
+					showFullScreenButton:"yes",
+					showScrubberToolTipLabel:"yes",
+					timeColor:"#B9B9B9",
+					youtubeQualityButtonNormalColor:"#B9B9B9",
+					youtubeQualityButtonSelectedColor:'#FFFFFF',
+					scrubbersToolTipLabelBackgroundColor:'#FFFFFF',
+					scrubbersToolTipLabelFontColor:'#5a5a5a',
+					audioVisualizerLinesColor:'#D60E63',
+					audioVisualizerCircleColor:'#FFFFFF',
+					thumbnailsPreviewWidth:196,
+					thumbnailsPreviewBackgroundColor:'#2e2e2e',
+				    thumbnailsPreviewBorderColor:'#414141',
+					thumbnailsPreviewLabelBackgroundColor:'#414141',
+					thumbnailsPreviewLabelFontColor:'#CCCCCC',
+					skipToVideoText:"You can skip to video in: ",
+					skipToVideoButtonText:"Skip Ad",
+
+					// Controls.
+					controlsMaxWidth:600,
+					controlsOffset:0,
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"no",
+					nextAndPrevButtonsOffsetX:20,
+					showLargeNextAndPrevButtons:"no",
+					largeNextAndPrevButtonsMaxWidthPos:1520,
+					showSlideshowButton:"yes",
+					slideshowAutoplay:"no",
+					slideshowDelay:5,
+					slideshowPreloaderBackgroundColor:"#333333",
+					slideshowPreloaderFillColor:"#FFFFFF",
+					showScrollbar:"yes",
+					showScrollbarOnMobile:"yes",
+					scrollbarHandlerWidth:200,
+					scrollbarTextColorNormal:"#FFFFFF",
+					scrollbarTextColorSelected:"#111111",
+					showBulletsNavigation:"no",
+					bulletsNormalColor:"#333333",
+					bulletsSelectedColor:"#FFFFFF",
+					bulletsNormalRadius:6,
+					bulletsSelectedRadius:9,
+					spaceBetweenBullets:18,
+												
+					// Caption.
+					showCaption:"yes",
+					captionPosition:"out",
+					captionAnimationType:"motion",
+					showCaptionOnTap:"yes",
+					showFullCaption:"no",
+				
+					// Menu.
+					showMenu:"yes",
+					startAtCategory:1,
+					menuPosition:"topright",
+					selectorLineColor:"#333333",
+					selectorBackgroundColor:"#1F1F1F",
+					selectorTextNormalColor:"#FFFFFF",
+					selectorTextSelectedColor:"#FFFFFF",
+					buttonBackgroundColor:"#1F1F1F",
+					buttonTextNormalColor:"#8F8F8F",
+					buttonTextSelectedColor:"#FFFFFF",
+					menuHorizontalMargins:12,
+					menuVerticalMargins:12,
+												
+					// Lightbox.
+					useLightbox:"yes",
+					rlUseDeepLinking:"yes",
+					rlItemBackgroundColor:"#212121",
+					rlDefaultItemWidth:1527,
+					rlDefaultItemHeight:859,
+					rlItemOffsetHeight:37,
+					rlItemOffsetHeightButtonsTop:47,
+					rlItemBorderSize:0,
+					rlItemBorderColor:"#FFFFFF",
+					rlMaxZoom:1.2,
+					rlPreloaderBkColor:"#2e2e2e",
+					rlPreloaderFillColor:"#FFFFFF",
+					rlButtonsAlignment:"in",
+					rlButtonsHideDelay:5,
+					rlMediaLazyLoading:"yes",
+					rlUseDrag:"yes",
+					rlUseAsModal:"no",
+					rlShowSlideShowButton:"yes",
+					rlShowSlideShowAnimation:"yes",
+					rlSlideShowAutoPlay:"no",
+					rlSlideShowAutoStop:"no",
+					rlSlideShowDelay:6,
+					rlSlideShowBkColor:"#2e2e2e",
+					rlSlideShowFillColor:"#FFFFFF",
+					rlUseKeyboard:"yes",
+					rlUseDoubleClick:"yes",
+					rlShowCloseButton:"yes",
+					rlShowFullscreenButton:"yes",
+					rlShowZoomButton:"yes",
+					rlShowCounter:"yes",
+					rlShowNextAndPrevBtns:"yes",
+					rlSpaceBetweenBtns:8,
+					rlButtonsOffsetIn:10,
+					rlButtonsOffsetOut:10,
+					rlBackgroundColor:"rgba(0,0,0,.99)",
+					rlShareButtons:['facebook', 'twitter', 'linkedin', 'tumblr', 'pinterest', 'reddit', 'buffer', 'digg','blogger'],
+					rlShareText:"Share on",
+					rlSharedURL:"deeplink",
+					rlShareMainBackgroundColor:"rgba(0,0,0,.4)",
+					rlShareBackgroundColor:"#FFFFFF",
+					rlShowThumbnails:"yes",
+					rlShowThumbnailsIcon:"yes",
+					rlThumbnailsHeight:80,
+					rlThumbnailsOverlayColor:"rgba(0,0,0,.4)",
+					rlThumbnailsBorderSize:2,
+					rlThumbnailsBorderColor:"#FFFFFF",
+					rlSpaceBetweenThumbnailsAndItem:10,
+					rlThumbnailsOffsetBottom:10,
+					rlSpaceBetweenThumbnails:5,
+					rlShowCaption:"yes",
+					rlCaptionPosition:"bottomout",
+					rlShowCaptionOnSmallScreens:"no",
+					rlCaptionAnimationType:"motion",
+					rlUseVideo:"yes",
+					rlFillEntireScreenWithPoster:"yes",
+					rlVolume:1,
+					rlVideoAutoPlay:"no",
+					rlNextVideoAutoPlay:"no",
+					rlVideoAutoPlayText:"Click to unmute",
+					rlShowLogo:"yes",
+					rlLogoPath:"content/rl/content/evp/skin/logo.png",
+					rlLogoLink:"",
+					rlShowDefaultControllerForVimeo:"yes",
+					rlShowScrubberWhenControllerIsHidden:"yes",
+					rlShowRewindButton:"yes",
+					rlShowVolumeButton:"yes",
+					rlShowChromecastButton:"yes",
+					rlShowPlaybackRateButton:"no",
+					rlShowQualityButton:"yes",
+					rlShowFullScreenButton:"yes",
+					rlShowScrubberToolTipLabel:"yes",
+					rlShowTime:"yes",
+					rlTimeColor:"#B9B9B9",
+					rlYoutubeQualityButtonNormalColor:"#B9B9B9",
+					rlYoutubeQualityButtonSelectedColor:"#FFFFFF",
+					rlScrubbersToolTipLabelBackgroundColor:"#FFFFFF",
+					rlScrubbersToolTipLabelFontColor:"#5a5a5a",
+					rlAudioVisualizerLinesColor:"#D60E63",
+					rlAudioVisualizerCircleColor:"#FFFFFF",
+					rlThumbnailsPreviewWidth:198,
+					rlThumbnailsPreviewBackgroundColor:"#2e2e2e",
+					rlThumbnailsPreviewBorderColor:"#414141",
+					rlThumbnailsPreviewLabelBackgroundColor:"#414141",
+					rlThumbnailsPreviewLabelFontColor:"#CCCCCC",
+					rlSkipToVideoText:"You can skip to video in: ",
+					rlSkipToVideoButtonText:"Skip Ad"
+				});	
+			});
+			</script></pre>
+		 <ul>
+		 	<br><h4><strong>Main:</strong></h4>
+		 	<li><span class="boldLi">instanceName</span>:"fwdr3dcov0" - the instance name used to access the API, if you want to use more than one instance please make sure you use the exact name as in the examples <strong>fwdr3dcov0</strong> and increase the last number depending of how many coverflow instance you want to use, ex:<strong>fwdr3dcov1</strong>, <strong>fwdr3dcov2</strong>, <strong>fwdr3dcov3</strong>...</li>
+        	<li><span class="boldLi">coverflowHolderDivId</span>:"myDiv" - the div id into which the coverflow will be added (this is also necessary if the <span class="boldLi">displayType</span> is set to fluidwidth).</li>
+			<li><span class="boldLi">coverflowDataListDivId</span>:"coverflowData" - the id of the <strong>&lt;div&gt</strong> element used as the datalist for the coverflow.</li>
+			<li><span class="boldLi">displayType</span>:"responsive" - the display type, this can be <strong>responsive</strong> or <strong>fluidwidth</strong>, all display types are explained and an example is provided for each one of them.</li>
+			<li><span class="boldLi">coverflowWidth</span>:1600 - This represents the maximum coverflow width in px if the <strong>displayType</strong> is <strong>responsive</strong>.</li>
+			<li><span class="boldLi">coverflowOffsetHeight</span>:120 - This represents the top and bottom gap/padding in px for the coverflow thumbnails.</li>
+			<li><span class="boldLi">thumbnailResizeOffest</span>:60 - The offset in px plus thumbnail width in px at which the coverflow will start to resize for smaller screens.</li>
+			<li><span class="boldLi">zIndex</span>:1 - this is a z-index used for the "fluid-width" version of the coverflow so that you can remove conflicts with overlapping menus etc.</li>
+			<li><span class="boldLi">mainFolderPath</span>:"content" - This represents the main folder path which contains all required files.</li>
+			<li><span class="boldLi">skinPath</span>:"skin_dark" - this is the skin folder name. This folder contains the coverflow skin for the graphincs/.png skin type.</li>
+			<li><span class="boldLi">useVectorIcons</span>:<strong>no</strong> - This can be <strong>yes</strong> or <strong>no</strong>, if set to yes the coverflow will use the vector skin otherwise it will use the graphics/.png skin, <a href="" target="">video tutorial</a>.</li>
+			<li><span class="boldLi">initializeOnlyWhenVisible</span>:<strong>no</strong> - this can be <strong>yes</strong> or <strong>no</strong>, lazy scrolling / loading, the posibility to initialize the coverflow on scroll when the coverflow is visible in the page, this way for example if the coverflow is in a section of a page that is not visible it will not be initialized, instead the coverflow will be initalized only when the user is scrolling to that section in which the coverflow is added, please note is the display type is fluid width this feature will be ignored.</li>
+			<li><span class="boldLi">coverflowStartPosition</span>:"center" - this is the thumbnails start position, it can be "left", "right" or "center" or the index of the thumbnail starting from 1.</li>
+			<li><span class="boldLi">coverflowXRotation</span>:10 - the coverflow rotation on the x-axis.</li>
+			<li><span class="boldLi">rightClickContextMenu</span>:"developer" - this is modifying the appearance of the context menu when right clicking. If "developer" the context menu will be the developer link "made by FWD", if "disabled" the context menu will be disabled completely, if "default" the context menu will be the browser default.</li>
+			<li><span class="boldLi">enableMouseWheelScroll</span>:<strong>yes</strong> - this can be <strong>yes</strong> or <strong>no</strong>. Disable or enable the mouse wheel support for scrolling the coverflow.</li>
+			<li><span class="boldLi">addKeyboardSupport</span>:<strong>yes</strong> - this can be <strong>yes</strong> or <strong>no</strong>, it adds keyboard navigation support for the coverflow, through the left and right arrows.</li>
+			<li><span class="boldLi">useDragAndSwipe</span>:<strong>yes</strong> - this can be <strong>yes</strong> or <strong>no</strong>. Adds support for drag and swipe with the mouse on desktop machines.</li>
+			<li><span class="boldLi">backgroundColor</span>:"#0b0b0b" - the coverflow background color.</li>
+			<li><span class="boldLi">backgroundImage</span>:"" - this coverflow background image path, pelase make sure that the image format is .jpg, .jpeg or .png.</li>
+			<li><span class="boldLi">backgroundImageRepeat</span>:"no-repeat" - this can be "no-repeat", "repeat", "repeat-x", "repeat-y".</li>
+			<li><span class="boldLi">backgroundImageSize</span>:"cover" - this can be "auto", "cover", "contain".</li>
+			<li><span class="boldLi">preloaderBackgroundColor</span>:"#333333" - the coverflow preloader circular animation background HEX color.</li>
+			<li><span class="boldLi">preloaderFillColor</span>:"#FFFFFF" - the coverflow preloader circular animation fill HEX color.</li>
+
+			
+			<br><br><h4><strong>Thumbnails:</strong></h4> 
+			<li><span class="boldLi">thumbnailWidth</span>:488 - the width in px of the coverflow thumbnails.</li>
+			<li><span class="boldLi">thumbnailHeight</span>:320 - the height in px of the coverflow thumbnails.</li>
+			<li><span class="boldLi">thumbnailXSpace3D</span>:72 - Offset/space in px on the x-axis between the side thumbnails.</li>
+			<li><span class="boldLi">thumbnailXOffset3D</span>:82 - Offset/space in px on the x-axis between the central thumbnail and the side thumbnails.</li>
+			<li><span class="boldLi">thumbnailZSpace3D</span>:30 - this is a value used for the z-axis space between the side thumbnails in px.</li>
+			<li><span class="boldLi">thumbnailZOffset3D</span>:200 - this is an offset used for the z-axis space between the central thumbnail and the side ones in px.</li>
+			<li><span class="boldLi">thumbnailYAngle3D</span>:70 - this is a value used for the y-angle of the side thumbnails in px.</li>
+			<li><span class="boldLi">thumbnailHoverOffset</span>:100 - this is a value used for the hover effect for the side thumbnails in px.</li>
+			<li><span class="boldLi">thumbnailOffsetY</span>:0 - the coverflow vertical/y-axis offest in px, this will move the thumbnails up if negative or down if positive vertically on the y-axis.</li>
+			<li><span class="boldLi">thumbnailBorderSize</span>:0 - the thumbnail border size in pixels.</li>
+			<li><span class="boldLi">thumbnailBackgroundColor</span>:"#666666" - the thumbnails background color.</li>
+			<li><span class="boldLi">thumbnailBorderColor1</span>:"#FFFFFF" - the thumbnails upper border color. If these two values are different, they create a gradient effect.</li>
+			<li><span class="boldLi">thumbnailBorderColor2</span>:"#FFFFFF" -  the thumbnails lower border color. If these two values are different, they create a gradient effect.</li>
+			<li><span class="boldLi">numberOfThumbnailsToDisplayLeftAndRight</span>:"4" - this represents the maximum number of thumbnails to be displayed on the left and right of the center, it can be <strong>all</strong> or a number starting from 1.</li>
+			<li><span class="boldLi">infiniteLoop</span>:"yes" this can be <strong>yes</strong> or <strong>no</strong>, it enables the coverflow movement to flow continuously in an infinite loop in any direction. Please note that in this case you can't display all the thumbnails in the setting above, you must set a specific number.</li>
+			<li><span class="boldLi">transparentImages</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, used when you want to use png images with transparent backgrounds.</li>
+			<li><span class="boldLi">showReflection</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, used to show or hide the thumbnails reflection.</li>
+			<li><span class="boldLi">reflectionHeight</span>:60 - this is the height of the thumbnails reflection.</li>
+			<li><span class="boldLi">reflectionDistance</span>:0 - the thumbnail reflection distance.</li>
+			<li><span class="boldLi">reflectionOpacity</span>:.25 - the thumbnails reflection opacity.</li>
+			<li><span class="boldLi">showThumbnailsGradient</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, used to show or hide the thumbnails gradient.</li>
+			<li><span class="boldLi">thumbnailGradientColor1</span>:"rgba(11, 11, 11, 0)" - this is the first color with transparency of the thumbnails gradient.</li>
+			<li><span class="boldLi">thumbnailGradientColor2</span>:"rgba(11, 11, 11, 1)" - this is the second color with transparency of the thumbnails gradient.</li>
+
+			<li><span class="boldLi">useVideo</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, enable video support inside the thumbnails, please make sure to set this to <strong>no</strong> if you are not using video.</li>
+			<li><span class="boldLi">videoAutoPlay</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, the video/audio autoplay for the first thumbnail when the coverflow is showed first time.</li>
+			<li><span class="boldLi">nextVideoAutoPlay</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, the video/audio autoplay for the next or previous thumbnail, when the coverflow thumbnail is changed/navigating to a different thumbnail.</li>
+			<li><span class="boldLi">videoAutoPlayText</span>:"Click to unmute" - video autoplay unmute button text. In some cases, the video can't autoplay with sound, for this cases an unmute button will appear with the text set in this option.</li>
+			<li><span class="boldLi">volume</span>:1 - video/audio start volume.</li>
+			<li><span class="boldLi">showLogo</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the video/audio logo.</li>
+			<li><span class="boldLi">logoPath</span>:"content/rl/content/evp/skin/logo.png" - the video/audio logo path, the supported formats are .jpg, .jpeg, .png.</li>
+			<li><span class="boldLi">logoLink</span>:"" - the page URL to open when the video/audio logo is clicked, if you don't want this option leave it black.</li>
+			<li><span class="boldLi">fillEntireVideoScreen</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, fill the video screen with the entire video, this option dose not work for Youtube and Vimeo.</li>
+			<li><span class="boldLi">showDefaultControllerForVimeo</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, use the player controller instead of the default Vimeo controller.</li>
+			<li><span class="boldLi">showScrubberWhenControllerIsHidden</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the video/audio main scrubber when the controller is hidden.</li>
+			<li><span class="boldLi">showVolumeButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the video/audio volume button.</li>
+			<li><span class="boldLi">showTime</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the video/audio current and total time.</li>
+			<li><span class="boldLi">showRewindButton</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, show the video/audio rewind button.</li>
+			<li><span class="boldLi">showQualityButton</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, show the video/audio Youtube quality button.</li>
+			<li><span class="boldLi">showPlaybackRateButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the video/audio playback rate speed button.</li>
+			<li><span class="boldLi">showChromecastButton</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, show the Chromecast button.</li>
+			<li><span class="boldLi">showFullScreenButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the fullscreen button.</li>
+			<li><span class="boldLi">showScrubberToolTipLabel</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the video and volume scrubbers tooltips.</li>
+			<li><span class="boldLi">timeColor</span>:"#B9B9B9" - the video/audio current and total time HEX color.</li>
+			<li><span class="boldLi">youtubeQualityButtonNormalColor</span>:"#B9B9B9" - the Youtube quality button text normal color.</li>
+			<li><span class="boldLi">youtubeQualityButtonSelectedColor</span>:"#FFFFFF" - the Youtube quality button text selected color.</li>
+			<li><span class="boldLi">scrubbersToolTipLabelBackgroundColor</span>:"#FFFFFF" - video and volume scrubbers tooltips background color.</li>
+			<li><span class="boldLi">scrubbersToolTipLabelFontColor</span>:"#5a5a5a" - video and volume scrubbers tooltips font color.</li>
+			<li><span class="boldLi">audioVisualizerLinesColor</span>:"#FFFFFF" - audio visualizer lines color.</li>
+			<li><span class="boldLi">audioVisualizerCircleColor</span>:"#B9B9B9" - audio visualizer circle color.</li>
+			<li><span class="boldLi">thumbnailsPreviewWidth</span>:196 - the thumbnails preview window width in px, the height is set automatically to keep a correct ratio.</li>
+			<li><span class="boldLi">thumbnailsPreviewBackgroundColor</span>:"#2e2e2e" - the thumbnails preview background color.</li>
+			<li><span class="boldLi">thumbnailsPreviewBorderColor</span>:"#414141" - the thumbnails preview border color.</li>
+			<li><span class="boldLi">thumbnailsPreviewLabelBackgroundColor</span>:"#414141" - the thumbnails preview label background color.</li>
+			<li><span class="boldLi">thumbnailsPreviewLabelFontColor</span>:"#CCCCCC" - the thumbnails preview label text color.</li>
+			<li><span class="boldLi">skipToVideoText</span>:"You can skip to video in: " - advertisement skip text.</li>
+			<li><span class="boldLi">skipToVideoButtonText</span>:"Skip Ad " - advertisement skip to video button text.</li>
+
+
+			<br><br><h4><strong>Controls:</strong></h4> 
+			<li><span class="boldLi">controlsMaxWidth</span>:940 - this represends the controls max width in px, it is used to scale the scrollbar when the page is resized.</li>
+			<li><span class="boldLi">controlsOffset</span>:0 - the controls (scrollbar, next, prev and slideshow buttons holder/parent) vertical/y-axis offest in px, this will move the controls up if negative or down if positive vertically on the y-axis.</li>
+			<li><span class="boldLi">showNextAndPrevButtons</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the next and previous buttons that appears under the coverflow.</li>
+			<li><span class="boldLi">showNextAndPrevButtonsOnMobile</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the next and previous buttons that appears under the coverflow on mobile devices (Android and IOS).</li>
+			<li><span class="boldLi">nextAndPrevButtonsOffsetX</span>:20 - the next and prev buttons that appears under the coverflow horizontal offset in px on the x-axis, thing of this as padding interior padding.</li>
+			<li><span class="boldLi">showLargeNextAndPrevButtons</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, show the next and previous buttons that appears at the coverflow left and right side.</li>
+			<li><span class="boldLi">largeNextAndPrevButtonsMaxWidthPos</span>:1300 - the distance in px between the next and previous buttons that appears at the coverflow left and right side.</li>
+			<li><span class="boldLi">showSlideshowButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the coverflow slideshow button.</li>
+			<li><span class="boldLi">slideShowAutoPlay</span>:<strong>yes</strong> - this can be <strong>yes</strong> or <strong>no</strong>, enable or disable the coverflow slideshow autoplay.</li>
+			<li><span class="boldLi">slideshowDelay</span>:5 - this is the coverflow slideshow delay in seconds, floats are accepted as well for example 6.5 seconds.</li>
+			<li><span class="boldLi">slideshowPreloaderBackgroundColor</span>:"#333333" - the coverflow slideshow animtation circular animation background HEX color.</li>
+			<li><span class="boldLi">slideshowPreloaderFillColor</span>:"#FFFFFF" - the coverflow slideshow animation fill HEX color.</li>
+			<li><span class="boldLi">showScrollbar</span>:<strong>yes</strong> - this can be <strong>yes</strong> or <strong>no</strong>, show the coverflow scrollbar.</li>
+			<li><span class="boldLi">showScrollbarOnMobile</span>:<strong>yes</strong> - this can be <strong>yes</strong> or <strong>no</strong>, show the scrollbar on mobile devices (Android and IOS).</li>
+			<li><span class="boldLi">scrollbarHandlerWidth</span>:5000 - the scrollbar handler width in px.</li>
+			<li><span class="boldLi">scrollbarTextColorNormal</span>:"#FFFFFF" - the normal color of the scrollbar text.</li>
+			<li><span class="boldLi">scrollbarTextColorSelected</span>:"#111111" - the selected color of the scrollbar text.</li>
+			<li><span class="boldLi">showBulletsNavigation</span>:<strong>no</strong> - this can be <strong>yes</strong> or <strong>no</strong>, enable or disable the bullet navigation.</li>
+			<li><span class="boldLi">bulletsNormalColor</span>:"#333333" - the normal color of the bullets navivation bullet.</li>
+			<li><span class="boldLi">bulletsSelectedColor</span>:"#FFFFFF" - the selected color of the bullets navivation bullet.</li>
+			<li><span class="boldLi">bulletsNormalRadius</span>:7 - the bullets navigation bullet radius normal state in px.</li>
+			<li><span class="boldLi">bulletsSelectedRadius</span>:10 - the bullets navigation bullet radius selected state in px.</li>
+			<li><span class="boldLi">spaceBetweenBullets</span>:20 - the space in px between the navigation bullets.</li>
+
+
+			<br><br><h4><strong>Caption:</strong></h4> 
+			<li><span class="boldLi">showCaption</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the coverflow caption.</li>
+			<li><span class="boldLi">captionPosition</span>:"out" - this can be <strong>out</strong> or <strong>in</strong>, positions the caption under the coverflow thumbnail or inside the coverflow thumbnail.</li>
+			<li><span class="boldLi">captionAnimationType</span>:"motion" - this can be <strong>motion</strong> or <strong>opacity</strong>, the caption animation type when it is showed or hidden.</li>
+			<li><span class="boldLi">showCaptionOnTap</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, if the caption is position inside the thumbnail, this option only on mobile devices (Android and IOS), allows to show the caption on the first tap and than on the second tap to execute the thumbnail logic for example open the lightbox.</li>
+			<li><span class="boldLi">showFullCaption</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, if the caption is positioned inside the thumbnail this option will show the full caption.</li>
+
+			
+			<br><br><h4><strong>Menu:</strong></h4> 
+			<li><span class="boldLi">showMenu</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the coverflow categories menu.</li>
+			<li><span class="boldLi">startAtCategory</span>:1 - if there is more then one category you can specify at which one to start, please note that the count starts from 1.</li>
+			<li><span class="boldLi">menuPosition</span>:"topright" - this can be <strong>topright</strong> or <strong>topleft</strong>.</li>
+			<li><span class="boldLi">selectorLineColor</span>:"#333333" - the selector separator line color.</li>
+			<li><span class="boldLi">selectorBackgroundColor</span>:"#1F1F1F" - the menu selector bacgroundcolor.</li>
+			<li><span class="boldLi">selectorTextNormalColor</span>:"#FFFFFF" - the menu selector text normal color.</li>
+			<li><span class="boldLi">selectorTextSelectedColor</span>:"#FFFFFF" - the menu selector text selected color.</li>
+			<li><span class="boldLi">buttonBackgroundColor</span>:"#1F1F1F" - the menu buttons background color.</li>
+			<li><span class="boldLi">buttonTextNormalColor</span>:"#8F8F8F" - the menu buttons text normal color.</li>
+			<li><span class="boldLi">buttonTextSelectedColor</span>:"#FFFFFF" - the menu buttons text selected color.</li>
+			<li><span class="boldLi">menuHorizontalMargins</span>:12 - the menu horizontal margins in px.</li>
+			<li><span class="boldLi">menuVerticalMargins</span>:12 - the menu vertical margins in px.</li>
+
+
+			<br><br><h4><strong>Lightbox:</strong></h4> 
+			<li><span class="boldLi">useLightbox</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, enable lightbox support, please make sure to set this to <strong>no</strong> if you don't want to use the lightbox.</li>
+			<li><span class="boldLi">rlUseDeepLinking</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, creates an unique and shareable link and history entry for the current opened media lightbox item.</li>
+			<li><span class="boldLi">rlItemBackgroundColor</span>:"#212121" - background color for the lightbox items.</li>
+			<li><span class="boldLi">rlDefaultItemWidth</span>:1527 - the default global lightbox item width in px if its Iframe, video or HTML content. Please note this option can be overwritten individually for each item.</li>
+			<li><span class="boldLi">rlDefaultItemHeight</span>:859 - the default global lightbox item height in px if its Iframe, video or HTML content. Please note this option can be overwritten individually for each item.</li>
+			<li><span class="boldLi">rlItemOffsetHeight</span>:37 - offset/gap in px for the lightbox items when buttons are aligned in or out.</li>
+			<li><span class="boldLi">rlItemOffsetHeightButtonsTop</span>:47 - offset/gap in px for the lightbox items when buttons are aligned top.</li>
+			<li><span class="boldLi">rlItemBorderSize</span>:0 - lightbox item border size in px.</li>
+			<li><span class="boldLi">rlItemBorderColor</span>:"#FFFFFF" - lightbox item border color.</li>
+			<li><span class="boldLi">rlMaxZoom</span>:1.2 - the zoom factor for the lightbox item if it is an image and it is zoomed in. For example to zoom the image 150% set this option to 1.5.</li>
+			<li><span class="boldLi">rlPreloaderBkColor</span>:"#2e2e2e" - the lightbox preloader circular animation background color.</li>
+			<li><span class="boldLi">rlPreloaderFillColor</span>:"#FFFFFF" - the lightbox preloader circular animation fill color.</li>
+			<li><span class="boldLi">rlButtonsAlignment</span>:"in" - this can be <strong>in</strong>, <strong>out</strong> and <strong>top</strong> the lightbox button alignment.</li>
+			<li><span class="boldLi">rlButtonsHideDelay</span>:5 - duration in seconds until the lightbox buttons will hide after several seconds of user inactivity.</li>
+			<li><span class="boldLi">rlMediaLazyLoading</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, loads the lightbox images and video posters in the background this way the user does not have to wait to load an image or a poster while navigating the lightbox gallery.</li>
+			<li><span class="boldLi">rlUseDrag</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, drag the lightbox media item to navigate to the next or previous slide.</li>
+			<li><span class="boldLi">rlUseAsModal</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, close the lightbox only if the close button is used.</li>
+			<li><span class="boldLi">rlShowSlideShowAnimation</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox slideshow circular animation.</li>
+			<li><span class="boldLi">rlShowSlideShowButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox slideshow play/pause button.</li>
+			<li><span class="boldLi">rlSlideShowAutoPlay</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, the lightbox will start the slideshow as soon as the first media item is showed.</li>
+			<li><span class="boldLi">rlSlideShowAutoStop</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, the lightbox will stop the slideshow when the last media item is displayed.</li>
+			<li><span class="boldLi">rlSlideShowDelay</span>:6 - the lightbox slideshow delay in seconds, floats are accepted as well for example 6.5 seconds.</li>
+			<li><span class="boldLi">rlSlideShowBkColor</span>:"#2e2e2e" - the lightbox slideshow circular animation background color.</li>
+			<li><span class="boldLi">rlSlideShowFillColor</span>:"#FFFFFF" - the lightbox slideshow circular animation fill color.</li>
+			<li><span class="boldLi">rlUseKeyboard</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, add keyboard support. ESC: close lightbox, LEFT & RIGHT ARROWS: skip video 10 seconds forward or backward if video playing or change slides if the video is not playing, F: video fullscreen/normalscreen, UP & DOWN ARROWS: video volume up or volume down, M: video mute/unmute, SPACE: video play/pause.</li>
+			<li><span class="boldLi">rlUseDoubleClick</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, use double click or double tap to maximize and minimize the lightbox item if it's an image.</li>
+			<li><span class="boldLi">rlShowCloseButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox close button.</li>
+			<li><span class="boldLi">rlShowFullscreenButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox fullscreen button.</li>
+			<li><span class="boldLi">rlShowZoomButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the zoom button if the lightbox item it's an image.</li>
+			<li><span class="boldLi">rlShowCounter</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox counter (item current number and total number of items).</li>
+			<li><span class="boldLi">rlShowNextAndPrevBtns</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the next and previous lightbox item button.</li>
+			<li><span class="boldLi">rlSpaceBetweenBtns</span>:8 - space/gap in px between lightbox buttons.</li>
+			<li><span class="boldLi">rlButtonsOffsetIn</span>:10 - space/gap between the buttons and the lightbox item.</li>
+			<li><span class="boldLi">rlButtonsOffsetOut</span>:10 - space/gap between the buttons and the and window left or right side.</li>
+			<li><span class="boldLi">rlBackgroundColor</span>:"rgba(0,0,0,.99)" - main lightbox background RGBA color.</li>
+			<li><span class="boldLi">rlShareButtons</span>:['facebook', 'twitter', 'linkedin', 'tumblr', 'pinterest', 'reddit', 'buffer', 'digg','blogger'], - lightbox share button and share buttons window. Set the order as you want and remove the ones that you don't need. If you don't want to use the share button leave this option empty <strong>shareButtons:[]</strong>.</li>
+			<li><span class="boldLi">rlShareText</span>:"Share on" - the lihgtbox share window text.</li>
+			<li><span class="boldLi">rlSharedURL</span>:"deeplink" - this can be <strong>deeplink</strong>, <strong>page</strong> and <strong>media</strong>, the URL used to share the current showed lightbox item.</li>
+			<li><span class="boldLi">rlShareMainBackgroundColor</span>:"rgba(0,0,0,.4)" - the lightbox main share window background RGBA color.</li>
+			<li><span class="boldLi">rlShareBackgroundColor</span>:"#FFFFFF" - the lightbox small share window background color.</li>
+			<li><span class="boldLi">rlShowThumbnails</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox thumbnails.</li>
+			<li><span class="boldLi">rlShowThumbnailsIcon</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox thumbnails play icon for the videos.</li>
+			<li><span class="boldLi">rlThumbnailsHeight</span>:80 - the lightbox thumbnails height in px, the width is set automatically to keep a correct image ratio.</li>
+			<li><span class="boldLi">rlThumbnailsOverlayColor</span>:"rgba(0,0,0,.4)" - the lightbox thumbnails transparent overlay RGBA color.</li>
+			<li><span class="boldLi">rlThumbnailsBorderSize</span>:2 - the lightbox thumbnails boder size in px.</li>
+			<li><span class="boldLi">rlThumbnailsBorderColor</span>:"#FFFFFF" - the lightbox thumbnails border color.</li>
+			<li><span class="boldLi">rlSpaceBetweenThumbnailsAndItem</span>:10 - the lightbox space/gap in px between the thumbnails and the item.</li>
+			<li><span class="boldLi">rlThumbnailsOffsetBottom</span>:10 - the space/gap in px between thumbnails and the lightbox bottom part.</li>
+			<li><span class="boldLi">rlSpaceBetweenThumbnails</span>:5 - the lightbox space/gap in px between thumbnails.</li>
+			<li><span class="boldLi">rlShowCaption</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox caption.</li>
+			<li><span class="boldLi">rlCaptionPosition</span>:"bottomout" - this can be <strong>bottomout</strong>, <strong>bottomin</strong> or <strong>topin</strong>, the caption position.</li>
+			<li><span class="boldLi">rlShowCaptionOnSmallScreens</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox caption on small screens if the lightbox height is smaller than 220px.</li>
+			<li><span class="boldLi">rlCaptionAnimationType</span>:"motion" - this can be <strong>motion</strong> or <strong>opacity</strong>, the lightbox caption animation type.</li>
+			<li><span class="boldLi">rlUseVideo</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, enable video support inside the lightbox, please make sure to set this to <strong>no</strong> if you are not using video.</li>
+			<li><span class="boldLi">rlFillEntireScreenWithPoster</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, fill the video screen poster to cover the entire video screen viewport.</li>
+			<li><span class="boldLi">rlVolume</span>:1 - video/audio start volume.</li>
+			<li><span class="boldLi">rlVideoAutoPlay</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, the lightbox video/audio autoplay for the first lightbox item when it is showed first time.</li>
+			<li><span class="boldLi">rlNextVideoAutoPlay</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, the lightbox video/audio autoplay for the next or previous item, when the lightbox is changed/navigating to a different item.</li>
+			<li><span class="boldLi">rlVideoAutoPlayText</span>:"Click to unmute" - lihgtox video autoplay unmute button text. In some cases, the video can't autoplay with sound, for this cases an unmute button will appear with the text set in this option.</li>
+			<li><span class="boldLi">rlShowLogo</span>:"yes"  - this can be <strong>yes</strong> or <strong>no</strong>,  show the lightbox video/audio logo.</li>
+			<li><span class="boldLi">rlLogoPath</span>:"content/rl/content/evp/skin/logo.png" - the lihgtbox video/audio logo path, the supported formats are .jpg, .jpeg, .png.</li>
+			<li><span class="boldLi">rlLogoLink</span>:"" - the page URL to open when the video/audio logo is clicked, if you don't want this option leave it black.</li>
+			<li><span class="boldLi">rlShowDefaultControllerForVimeo</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, use the player controller instead of the default Vimeo controller.</li>
+			<li><span class="boldLi">rlShowScrubberWhenControllerIsHidden</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox video/audio main scrubber when the controller is hidden.</li>
+			<li><span class="boldLi">rlShowRewindButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox video/audio rewind button.</li>
+			<li><span class="boldLi">rlShowVolumeButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox video/audio volume button.</li>
+			<li><span class="boldLi">rlShowChromecastButton</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox Chromecast button. Only one instnace of Chromecast can be created per page (it will work only in the fist created video instance) so if Chromecast is enabled in the coverflow thumbnails it will not work in the lightbox, if you want it to work in the lightbox please make sure you set use Chromecast to no in the coverflow thumbnails settings.</li>
+			<li><span class="boldLi">rlShowPlaybackRateButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show lightbox video/audio playback rate speed button.</li>
+			<li><span class="boldLi">rlShowQualityButton</span>:"no" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox video/audio Youtube quality button.</li>
+			<li><span class="boldLi">rlShowFullScreenButton</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox fullscreen button.</li>
+			<li><span class="boldLi">rlShowScrubberToolTipLabel</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox video and volume scrubbers tooltips.</li>
+			<li><span class="boldLi">rlShowTime</span>:"yes" - this can be <strong>yes</strong> or <strong>no</strong>, show the lightbox video/audio current and total time.</li>
+			<li><span class="boldLi">rlTimeColor</span>:"#B9B9B9" - the lihgtbox video/audio current and total time HEX color.</li>
+			<li><span class="boldLi">rlYoutubeQualityButtonNormalColor</span>:"#B9B9B9" - the lihgtbox Youtube quality button text normal color.</li>
+			<li><span class="boldLi">rlYoutubeQualityButtonSelectedColor</span>:"#FFFFFF" - the lihgtbox Youtube quality button text selected color.</li>
+			<li><span class="boldLi">rlScrubbersToolTipLabelBackgroundColor</span>:"#FFFFFF" - lihgtbox video and volume scrubbers tooltips background color.</li>
+			<li><span class="boldLi">rlSrubbersToolTipLabelFontColor</span>:"#5a5a5a" - lihgtbox video and volume scrubbers tooltips font color.</li>
+			<li><span class="boldLi">rlAudioVisualizerLinesColor</span>:"#570AB8" - lihgtbox audio visualizer lines color.</li>
+			<li><span class="boldLi">rlAudioVisualizerCircleColor</span>:"#b9b9b9" - lihgtbox audio visualizer circle color.</li>
+			<li><span class="boldLi">rlThumbnailsPreviewWidth</span>:196 - the lightbox thumbnails preview window width in px, the height is set automatically to keep a correct ratio.</li>
+			<li><span class="boldLi">rlThumbnailsPreviewBackgroundColor</span>:"#2e2e2e" - the lightbox thumbnails preview background color.</li>
+			<li><span class="boldLi">rlThumbnailsPreviewBorderColor</span>:"#414141" - the lightbox thumbnails preview border color.</li>
+			<li><span class="boldLi">rlThumbnailsPreviewLabelBackgroundColor</span>:"#414141" - the lightbox thumbnails preview label background color.</li>
+			<li><span class="boldLi">rlThumbnailsPreviewLabelFontColor</span>:"#CCCCCC" - the lightbox thumbnails preview label text color.</li>
+			<li><span class="boldLi">rlSkipToVideoText</span>:"You can skip to video in: " - lightbox advertisement skip text.</li>
+			<li><span class="boldLi">rlSkipToVideoButtonText</span>:"Skip Ad " - lightbox advertisement skip to video button text.</li>
+		</li>
+       	
+       	<br><br>
+	    <h3 id="categories"><strong>E) Adding categories</strong> - <a href="#toc">top</a></h3>
+		<p>Adding categories is easy just copy and paste inside the datalist <strong>&lt;div&gt</strong> element another <strong>&lt;div&gt</strong> element with an attribute <strong>data-cat</strong>, this attribute is setting the menu button label. Inside this div element with the attribute <strong>data-cat</strong> the coverflow thumbnails are added (please read  <a href="#datalist">Adding thumbnails</a>). To remove the category just delete the div element with the attribute <strong>data-cat</strong> which you don't need. Please note that if the coverflow has only one category the menu will be disabled/not visible.</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+		
+		<!-- coverflow data -->
+		<div id="coverflowData" style="display: none;">
+
+			<!-- category  -->
+			<div data-cat="Cateogory 1">
+				<!-- Thumbnails added here. -->
+			</div> -->
+			<!-- end  -->
+
+			<!-- category  -->
+			<div data-cat="Cateogory 2">
+				<!-- Thumbnails added here. -->
+			</div>
+			<!-- end  -->
+
+			<!-- category  -->
+			<div data-cat="Cateogory 3">
+				<!-- Thumbnails added here. -->
+			</div>
+			<!-- end  -->
+
+		</div></pre>
+        
+        <br><br>
+        <h3 id="datalist"><strong>F) Adding thumbnails</strong> - <a href="#toc">top</a></h3>
+		<p>This section describes how to add a thumbnail and how to configure them. Make sure you have opened any of the HTML files from the <strong>start</strong> folder provided, in a text editor for reference. First you need to know that each thumbnail has an image, it can play a video inside the thumbnail, open a lightbox with various formats, open a page/URL or it can be set to have no action on click.</p>
+
+		<p><b>Adding thumbnail images:</b></p>
+		<p>To add an image in the coverflow (a coverflow thumbnail) add an ul tag inside the <strong>ul</strong> elements that represets the thumbnail entry in the data list, this ul has <strong>li</strong> element with an attribute <strong>data-thumb-src</strong> which holds the image src, the supported formats are .jpg, .jpeg, .png. Adding it like this it will have no action when the thumbnail is clicked.</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+			</ul>
+		</pre>
+		
+		<br>
+		<p><b>Adding thumbnail caption:</b></p>
+		<p>To add thumbnail caption add inside the thumbnail <strong>ul</strong> element a <strong>li</strong> element with an attribute <strong>data-thumb-caption</strong>, inside this element there ar two <strong>p</strong> tags, one for the title and the other one for the decription, the CSS for this can be found in the <strong>content/global.css</strong>, in case that you want to change the style, edit the <strong>fwdr3dcov-title</strong> and <strong>fwdr3dcov-desc</strong> classes.</p>
+
+		<p>The attribute <strong>data-thumb-caption-offset</strong> is used if the caption is positioned inside the thumbnail and it will push up the caption in px based on the attribute value, in this case 70px, when the thumbnail is hovered the entire caption is showed.</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+		
+		<br>
+		<p><b>Adding video inside the thumbnail:</b></p>
+		<p>To add video in the thumbnail add a attribute <strong>data-thumb-video-src</strong> that holds the video src, suported formats are <strong>mp4</strong>, <strong>mp3</strong>, <strong>Youtube</strong> (use Youtube video URL), <strong>Vimeo</strong> (use Vimeo video URL), <strong>HLS</strong>, <a href="https://www.youtube.com/watch?v=YK3YucN2PYc" target="_blank"><strong>Google Drive</strong></a> and other colud formats.</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-thumb-src="media/thumbnails/1.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add <strong>video password</strong> use the <strong>data-thumb-password</strong> attribute, the password has to be encoded using <a href="https://webdesign-flash.ro/ps/" target="_blank">this tool</a>, In the below example the encodded password is <strong>Meli</strong>.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-thumb-src="media/thumbnails/1.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-password="dd1d878544e988bb644756ca5e0ba56b"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add video <strong>thumbnails preview</strong> use the <strong>data-thumb-preview-src</strong> attribute, if set to <strong>auto</strong> it will auto generate thumbnails (this dose not work for Youtube and Vimeo). It is also possible to add a <strong>.vtt</strong> file, just set this attribute to point to a .vtt file, there is a smaple included in the <strong>media/thumbnails.vtt</strong>.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-thumb-src="media/thumbnails/1.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-preview-src="auto"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add <strong>video subtitle</strong> use the <strong>data-thumb-subtitle-src</strong> attribute that holds the subtitle src, the sbutitle format has to be <strong>srt/vtt</strong>, a subtitle file example can be found in the <strong>media/subtitles</strong> folder.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-thumb-src="media/thumbnails/1.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add <strong>VAST</strong> or <strong>Google Adsense/IMA</strong> use the <strong>data-thumb-vast-src</strong> attribute that holds the VAST/IMA URL.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-thumb-src="media/thumbnails/1.jpg" data-thumb-video-src="media/videos/fwd-1080p.mp4" data-thumb-vast-src="media/vast/VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single (non linear between breaks) Ad.xml"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+		
+		<br><br>
+		<p><b>Adding lightbox items:</b></p>
+		<p>To add a lightbox item to be showed when a thumbnail is clicked add an li tag inside the thumbnail <strong>ul</strong> elements with an attribute <strong>data-rl-src</strong> that holds the lightbox source to open. Suported formats are <strong>mp4</strong>, <strong>mp3</strong>, <strong>Youtube</strong> (use Youtube video URL), <strong>Vimeo</strong> (use Vimeo video URL), <strong>HLS</strong>, <a href="https://www.youtube.com/watch?v=YK3YucN2PYc" target="_blank"><strong>Google Drive</strong></a> and other colud formats, <strong>Iframe</strong> (use page URL), <strong>HTML content</strong> (use the element ID, ex: #myId), <strong>Google maps</strong> (use Google Maps embed URL), <strong>PDF</strong> (use .pdf URL).</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="media/videos/fwd-1080p.mp4"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add <strong>lightbox caption</strong> add inside the thumbnail <strong>ul</strong> element a <strong>li</strong> element with an attribute <strong>data-rl-caption</strong>, inside this element there ar two <strong>p</strong> tags, one for the title and the other one for the decription, the CSS for this can be found in the <strong>content/global.css</strong>, in case that you want to change the style, edit the <strong>fwdrl-title</strong> and <strong>fwdrl-desc</strong> classes.</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="media/videos/fwd-1080p.mp4"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+				<li data-rl-caption="">
+					<p class="fwdrl-title">Lightbox title</p>
+					<p class="fwdrl-desc">Lightbox description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add <strong>lightbox video poster</strong> use the <strong>data-rl-poster-src</strong> attribute, this holds the poster src, the supported formats are .jpg, .jpeg and .png.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+				<li data-rl-caption="">
+					<p class="fwdrl-title">Lightbox title</p>
+					<p class="fwdrl-desc">Lightbox description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add <strong>lightbox video password</strong> use the <strong>data-rl-password</strong> attribute, the password has to be encoded using <a href="https://webdesign-flash.ro/ps/" target="_blank">this tool</a>, In the below example the encodded password is <strong>Meli</strong>.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-password="dd1d878544e988bb644756ca5e0ba56b"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+				<li data-rl-caption="">
+					<p class="fwdrl-title">Lightbox title</p>
+					<p class="fwdrl-desc">Lightbox description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add video <strong>lightbox thumbnails preview</strong> use the <strong>data-rl-preview-src</strong> attribute, if set to <strong>auto</strong> it will auto generate thumbnails (this dose not work for Youtube and Vimeo). It is also possible to add a <strong>.vtt</strong> file, just set this attribute to point to a .vtt file, there is a smaple included in the <strong>media/thumbnails.vtt</strong>.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-preview-src="auto"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+				<li data-rl-caption="">
+					<p class="fwdrl-title">Lightbox title</p>
+					<p class="fwdrl-desc">Lightbox description.</p>
+				</li>
+			</ul>
+		</pre>
+
+
+
+		<br>
+		<p>To add <strong>lightbox video subtitle</strong> use the <strong>data-rl-subtitle-src</strong> attribute that holds the subtitle src, a subtitle file example can be found in the <strong>media/subtitles</strong> folder.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul> 
+				<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-subtitle-src="media/subtitles/english_subtitle.vtt"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+				<li data-rl-caption="">
+					<p class="fwdrl-title">Lightbox title</p>
+					<p class="fwdrl-desc">Lightbox description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>To add <strong>lightbox VAST</strong> or <strong>lightbox Google Adsense/IMA</strong> use the <strong>data-rl-vast-src</strong> attribute that holds the VAST/IMA URL.</p>
+
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-vast-src="//googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+				<li data-rl-caption="">
+					<p class="fwdrl-title">Lightbox title</p>
+					<p class="fwdrl-desc">Lightbox description.</p>
+				</li>
+			</ul>
+		</pre>
+
+		<br>
+		<p>For all lightbox formats except the image type it is possible to set an individual size using the <strong>data-rl-width</strong> and <strong>data-rl-height</strong> attributes (this values are in px). This attributes if used will overwrite the global <strong>rlDefaultItemWidth</strong>  and <strong>rlDefaultItemHeight</strong>.</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="media/videos/fwd-1080p.mp4" data-rl-poster-src="media/images/mp4.jpg" data-rl-width="800" data-rl-height="800"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+				<li data-rl-caption="">
+					<p class="fwdrl-title">Lightbox title</p>
+					<p class="fwdrl-desc">Lightbox description.</p>
+				</li>
+			</ul>
+		</pre>
+
+
+		<br><br>
+		<p><b>Open new page when the thumbnail is clicked:</b></p>
+		<p>To open a new page when the center/front thumbnail is clicked set the <strong>data-rl-src</strong> attribute to the page URL and add infront of it <strong>link:</strong> for example <strong>link:https://your-page.com</strong>. To open it in the same window set the <strong>data-rl-target</strong> to <strong>_self</strong>, to open it in a new page set the <strong>data-rl-target</strong> to _blank.</p>
+		<pre class="brush: js; html-script: true, class-name: 'negativeLeftMarginsHTML3'">
+			<ul>
+				<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+				<li data-thumb-src="media/thumbnails/1.jpg"></li>
+				<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title">Thumbnail title</p>
+					<p class="fwdr3dcov-desc">Thumbnail description.</p>
+				</li>
+			</ul>
+		</pre>
+
+
+		<br><br><br>
+		<h3 id="skin"><strong>G) Modifying the skin:</strong> - <a href="#toc">top</a></h3>
+		
+		<p>This section explains how to modify the skin, graphics/.png and also the vector skin, this is better explained in a <a href="https://www.youtube.com/watch?v=_TNfzXuz7ck" target="_blank">video tutorial</a>, pelase watch it from start to end.</p>
+		
+		
+		<br><br>
+		<h3 id="api"><strong>H) API specifications:</strong> - <a href="#toc">top</a></h3>
+		
+		<p>The following lists represent all the public API functions and event listeners that you can use from the coverflow externally, the API methods and events are called using the coverflow <strong>instanceName</strong>, ex: <strong>fwdr3dcov0.goToThumb(1);</strong>.You can find an example using these API methods and events in the <strong>start</strong> folder at the <strong>api_test.html</strong> file.</p>
+		 
+		<h4><strong>Public methods:</strong></h4>
+		
+		<table>
+			<tr class="firstTr">
+				<th class="firstTd">Function</th>
+				<th class="secondTd">Method</th>
+				<th class="thirdTd">Description</th>
+			</tr>
+			<tr>
+				<td><p class="mainProp">isAPIReady</p></td>
+				<td class="prop"><span class="inlineSpan">isAPIReady()</span>:Boolean</td>
+				<td class="lastCol">Specifies if the API functions are ready to use, possible values are <span class="mainProp">true</span> or <span class="mainProp">false</span>.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">getCurrentCategoryId</p></td>
+				<td class="prop"><span class="inlineSpan">getCurrentCategoryId()</span>:Number</td>
+				<td class="lastCol">Get the current category id, this method returns a number between 0 and the number of categories - 1.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">switchCategory</p></td>
+				<td class="prop"><span class="inlineSpan">switchCategory( Number )</span>:void</td>
+				<td class="lastCol">Set the category id, it will automatically switch to that category just like in the combobox selection. Accepts a parameter that represents a number between 0 and the number of categories - 1.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">getCurrentThumbId</p></td>
+				<td class="prop"><span class="inlineSpan">getCurrentThumbId()</span>:Number</td>
+				<td class="lastCol">Get the current thumb id, this method returns a number between 0 and the number of thumbs - 1.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">goToThumb</p></td>
+				<td class="prop"><span class="inlineSpan">goToThumb( Number )</span>:void</td>
+				<td class="lastCol">Set the thumb id, it will automatically go to that thumb. Accepts a parameter that represents a number between 0 and the number of thumbs - 1.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">isSlideshowPlaying</p></td>
+				<td class="prop"><span class="inlineSpan">isSlideshowPlaying()</span>:Boolean</td>
+				<td class="lastCol">Specifies if the slideshow is playing, possible values are <span class="mainProp">true</span> or <span class="mainProp">false</span>.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">startSlideshow</p></td>
+				<td class="prop"><span class="inlineSpan">startSlideshow()</span>:void</td>
+				<td class="lastCol">Starts the coverflow slideshow to play.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">stopSlideshow</p></td>
+				<td class="prop"><span class="inlineSpan">stopSlideshow()</span>:void</td>
+				<td class="lastCol">Stops the coverflow playing slideshow.</td>
+			</tr>
+		</table>
+		
+		<br>
+		<h4><strong>Event listeners:</strong></h4>
+		
+		<table>
+			<tr class="firstTr">
+				<th class="firstTd">Event</th>
+				<th class="secondTd">Prefix</th>
+				<th class="thirdTd">Description</th>
+			</tr>
+			<tr>
+				<td><p class="mainProp">isAPIReady</p></td>
+				<td class="prop"><span class="inlineSpan">FWDR3DCov.IS_API_READY</span></td>
+				<td class="lastCol">Dispatched when the coverflow instance API is actually available to use.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">categoryChange</p></td>
+				<td class="prop"><span class="inlineSpan">FWDR3DCov.CATEGORY_CHANGE</span></td>
+				<td class="lastCol">Dispatched when the coverflow category has changed. It has the current category id attached to it, you can access it like an attribute "event.id".</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">thumbChange</p></td>
+				<td class="prop"><span class="inlineSpan">FWDR3DCov.THUMB_CHANGE</span></td>
+				<td class="lastCol">Dispatched when the coverflow thumb has changed. It has the current thumb id attached to it, you can access it like an attribute "event.id".</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">rlShowStart</p></td>
+				<td class="prop"><span class="inlineSpan">FWDR3DCov.RL_SHOW_START</span></td>
+				<td class="lastCol">Dispatched when the lightbox is opened/showed animation has started.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">rlHideComplete</p></td>
+				<td class="prop"><span class="inlineSpan">FWDR3DCov.RL_HIDE_COMPLETE</span></td>
+				<td class="lastCol">Dispatched when the lightbox is hide/close animation is complete.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">goFullScreen</p></td>
+				<td class="prop"><span class="inlineSpan">FWDR3DCov.GO_FULLSCREEN</span></td>
+				<td class="lastCol">Dispatched when the coverflow video player go to full screen mode.</td>
+			</tr>
+			<tr>
+				<td><p class="mainProp">goNormalScreen</p></td>
+				<td class="prop"><span class="inlineSpan">FWDR3DCov.GO_NORMALSCREEN</span></td>
+				<td class="lastCol">Dispatched when the coverflow video player go to normal screen mode.</td>
+			</tr>
+		</table>
+	
+		<br><br>
+        <h3 id="credits"><strong>I) Sources and Credits:</strong> - <a href="#toc">top</a></h3>
+  
+        <p>This project was made by Tibi from FWD (FWDesign) <a href="http://www.webdesign-flash.ro" target="_blank">Future Web Design</a>, for more information and support contact me at <a href="mailto:tibi_diablo@yahoo.com">tibi_diablo@yahoo.com</a></p>
+		
+		<p>Once again, thank you so much for purchasing this item. As I said at the beginning, I'd be glad to help you if you have any questions regarding this coverflow and I'll do my best to assist.</p> 
+		
+		<p class="append-bottom alt large"><strong>FWDesign</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
+
+</script>

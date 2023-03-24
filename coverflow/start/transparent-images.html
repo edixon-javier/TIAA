@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Royal 3D Coverflow</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+		
+		<!-- Imports required for the css and js files -->
+		<link rel="stylesheet" type="text/css" href="content/global.css"/>
+		<script type="text/javascript" src="java/FWDR3DCov.js"></script>
+	
+		<style>
+			body{
+				margin: 0;
+			}
+		</style>
+		
+		<!-- Setup coverflow -->
+		<script type="text/javascript">
+			FWDR3DCovUtils.onReady(function(){
+				new FWDR3DCov({
+
+					// Main.
+					instanceName:'fwdr3dcov0',
+					coverflowHolderDivId:"myDiv",
+					coverflowDataListDivId:"coverflowData",
+					displayType:"responsive",
+					coverflowWidth:1600,
+					coverflowOffsetHeight:120,
+					thumbnailResizeOffest:60,
+					zIndex:0,
+					mainFolderPath:"content",
+					skinPath:"skin_white",
+					useVectorIcons:"no",
+					initializeOnlyWhenVisible:"no",
+					coverflowStartPosition:"center",
+					coverflowXRotation:0,
+					rightClickContextMenu:"developer",
+					enableMouseWheelScroll:"no",
+					addKeyboardSupport:"yes",
+					useDragAndSwipe:"yes",
+					backgroundColor:"#f8f8f8",
+					backgroundImage:"",
+					backgroundImageRepeat:'no-repeat',
+					backgroundImageSize:"auto",
+					preloaderBackgroundColor:"#333333",
+					preloaderFillColor:"#FFFFFF",
+
+					// Thumbnails.
+					thumbnailWidth:295,
+		            thumbnailHeight:340,
+		            thumbnailXSpace3D:200,
+					thumbnailXOffset3D:100,
+					thumbnailZSpace3D:0,
+					thumbnailZOffset3D:800,
+					thumbnailYAngle3D:0,
+					thumbnailHoverOffset:20,
+					thumbnailOffsetY:0,
+					thumbnailBorderSize:0,
+					thumbnailBackgroundColor:"#666666",
+					thumbnailBorderColor1:"#FFFFFF",
+					thumbnailBorderColor2:"#FFFFFF",
+					numberOfThumbnailsToDisplayLeftAndRight:"3",
+					infiniteLoop:"yes",
+					transparentImages:"yes",
+					showReflection:"no",
+					reflectionHeight:60,
+					reflectionDistance:0,
+					reflectionOpacity:.15,
+					showThumbnailsGradient:"yes",
+					thumbnailGradientColor1:"rgba(255, 255, 255, 0)",
+					thumbnailGradientColor2:"rgba(255, 255, 255, .2)",
+					useVideo:"yes",
+					videoAutoPlay:"no",
+					nextVideoAutoPlay:"no",
+					videoAutoPlayText:"Click to unmute",
+					volume:1,
+					showLogo:"yes",
+					logoPath:"content/rl/content/evp/skin/logo.png",
+					logoLink:"",
+					fillEntireVideoScreen:"yes",
+					showDefaultControllerForVimeo:"yes",
+					showScrubberWhenControllerIsHidden:"yes",
+					showVolumeButton:"yes",
+					showTime:"yes",
+					showRewindButton:"no",
+					showQualityButton:"no",
+					showPlaybackRateButton:"yes",
+					showChromecastButton:"no",
+					showFullScreenButton:"yes",
+					showScrubberToolTipLabel:"yes",
+					timeColor:"#B9B9B9",
+					youtubeQualityButtonNormalColor:"#B9B9B9",
+					youtubeQualityButtonSelectedColor:'#FFFFFF',
+					scrubbersToolTipLabelBackgroundColor:'#FFFFFF',
+					scrubbersToolTipLabelFontColor:'#5a5a5a',
+					audioVisualizerLinesColor:'#D60E63',
+					audioVisualizerCircleColor:'#FFFFFF',
+					thumbnailsPreviewWidth:196,
+					thumbnailsPreviewBackgroundColor:'#2e2e2e',
+				    thumbnailsPreviewBorderColor:'#414141',
+					thumbnailsPreviewLabelBackgroundColor:'#414141',
+					thumbnailsPreviewLabelFontColor:'#CCCCCC',
+					skipToVideoText:"You can skip to video in: ",
+					skipToVideoButtonText:"Skip Ad",
+
+					// Controls.
+					controlsMaxWidth:600,
+					controlsOffset:0,
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"no",
+					nextAndPrevButtonsOffsetX:20,
+					showLargeNextAndPrevButtons:"no",
+					largeNextAndPrevButtonsMaxWidthPos:1300,
+					showSlideshowButton:"yes",
+					slideshowAutoplay:"no",
+					slideshowDelay:5,
+					slideshowPreloaderBackgroundColor:"#333333",
+					slideshowPreloaderFillColor:"#FFFFFF",
+					showScrollbar:"yes",
+					showScrollbarOnMobile:"yes",
+					scrollbarHandlerWidth:200,
+					scrollbarTextColorNormal:"#FFFFFF",
+					scrollbarTextColorSelected:"#FFFFFF",
+					showBulletsNavigation:"no",
+					bulletsNormalColor:"#D2D2D2",
+					bulletsSelectedColor:"#333333",
+					bulletsNormalRadius:6,
+					bulletsSelectedRadius:9,
+					spaceBetweenBullets:18,
+												
+					// Caption.
+					showCaption:"yes",
+					captionPosition:"out",
+					captionAnimationType:"motion",
+					showCaptionOnTap:"yes",
+					showFullCaption:"no",
+				
+					// Menu.
+					showMenu:"yes",
+					startAtCategory:1,
+					menuPosition:"topright",
+					selectorLineColor:"#D1D1D1",
+					selectorBackgroundColor:"#EDEDED",
+					selectorTextNormalColor:"#111111",
+					selectorTextSelectedColor:"#111111",
+					buttonBackgroundColor:"#EDEDED",
+					buttonTextNormalColor:"#717171",
+					buttonTextSelectedColor:"#111111",
+					menuHorizontalMargins:12,
+					menuVerticalMargins:12,
+												
+					// Lightbox.
+					useLightbox:"yes",
+					rlUseDeepLinking:"yes",
+					rlItemBackgroundColor:"#212121",
+					rlDefaultItemWidth:1527,
+					rlDefaultItemHeight:859,
+					rlItemOffsetHeight:37,
+					rlItemOffsetHeightButtonsTop:47,
+					rlItemBorderSize:0,
+					rlItemBorderColor:"#FFFFFF",
+					rlMaxZoom:1.2,
+					rlPreloaderBkColor:"#2e2e2e",
+					rlPreloaderFillColor:"#FFFFFF",
+					rlButtonsAlignment:"in",
+					rlButtonsHideDelay:5,
+					rlMediaLazyLoading:"yes",
+					rlUseDrag:"yes",
+					rlUseAsModal:"no",
+					rlShowSlideShowButton:"yes",
+					rlShowSlideShowAnimation:"yes",
+					rlSlideShowAutoPlay:"no",
+					rlSlideShowAutoStop:"no",
+					rlSlideShowDelay:6,
+					rlSlideShowBkColor:"#2e2e2e",
+					rlSlideShowFillColor:"#FFFFFF",
+					rlUseKeyboard:"yes",
+					rlUseDoubleClick:"yes",
+					rlShowCloseButton:"yes",
+					rlShowFullscreenButton:"yes",
+					rlShowZoomButton:"yes",
+					rlShowCounter:"yes",
+					rlShowNextAndPrevBtns:"yes",
+					rlSpaceBetweenBtns:8,
+					rlButtonsOffsetIn:10,
+					rlButtonsOffsetOut:10,
+					rlBackgroundColor:"rgba(0,0,0,.99)",
+					rlShareButtons:['facebook', 'twitter', 'linkedin', 'tumblr', 'pinterest', 'reddit', 'buffer', 'digg','blogger'],
+					rlShareText:"Share on",
+					rlSharedURL:"deeplink",
+					rlShareMainBackgroundColor:"rgba(0,0,0,.4)",
+					rlShareBackgroundColor:"#FFFFFF",
+					rlShowThumbnails:"yes",
+					rlShowThumbnailsIcon:"yes",
+					rlThumbnailsHeight:80,
+					rlThumbnailsOverlayColor:"rgba(0,0,0,.4)",
+					rlThumbnailsBorderSize:2,
+					rlThumbnailsBorderColor:"#FFFFFF",
+					rlSpaceBetweenThumbnailsAndItem:10,
+					rlThumbnailsOffsetBottom:10,
+					rlSpaceBetweenThumbnails:5,
+					rlShowCaption:"yes",
+					rlCaptionPosition:"bottomout",
+					rlShowCaptionOnSmallScreens:"no",
+					rlCaptionAnimationType:"motion",
+					rlUseVideo:"yes",
+					rlFillEntireScreenWithPoster:"yes",
+					rlVolume:1,
+					rlVideoAutoPlay:"no",
+					rlNextVideoAutoPlay:"no",
+					rlVideoAutoPlayText:"Click to unmute",
+					rlShowLogo:"yes",
+					rlLogoPath:"content/rl/content/evp/skin/logo.png",
+					rlLogoLink:"",
+					rlShowDefaultControllerForVimeo:"yes",
+					rlShowScrubberWhenControllerIsHidden:"yes",
+					rlShowRewindButton:"yes",
+					rlShowVolumeButton:"yes",
+					rlShowChromecastButton:"yes",
+					rlShowPlaybackRateButton:"no",
+					rlShowQualityButton:"yes",
+					rlShowFullScreenButton:"yes",
+					rlShowScrubberToolTipLabel:"yes",
+					rlShowTime:"yes",
+					rlTimeColor:"#B9B9B9",
+					rlYoutubeQualityButtonNormalColor:"#B9B9B9",
+					rlYoutubeQualityButtonSelectedColor:"#FFFFFF",
+					rlScrubbersToolTipLabelBackgroundColor:"#FFFFFF",
+					rlScrubbersToolTipLabelFontColor:"#5a5a5a",
+					rlAudioVisualizerLinesColor:"#D60E63",
+					rlAudioVisualizerCircleColor:"#FFFFFF",
+					rlThumbnailsPreviewWidth:196,
+					rlThumbnailsPreviewBackgroundColor:"#2e2e2e",
+					rlThumbnailsPreviewBorderColor:"#414141",
+					rlThumbnailsPreviewLabelBackgroundColor:"#414141",
+					rlThumbnailsPreviewLabelFontColor:"#CCCCCC",
+					rlSkipToVideoText:"You can skip to video in: ",
+					rlSkipToVideoButtonText:"Skip Ad"
+				});	
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<!-- Div used as a holder for the coverflow -->
+		<div id="myDiv"></div>
+
+		<!-- Carousel data -->
+		<div id="coverflowData" style="display: none;">
+
+			<!-- category  -->
+			<div data-cat="pots">
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-14.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title pot">Silver Dollar Plant</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-15.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title pot">Epipremnum aureum or Devil's Ivy</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+				
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-3.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Sleepy Face Painted Clay Pot</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-4.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">My Patch of Heaven</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-5.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Rainbow Painted Flower Pot</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-6.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Painted Aloe Pot Inspiration</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-1.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Cyan Creative Tree Pot</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-2.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Donut Themed Terra Cotta Pot</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-8.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Poured Paint Potted Plant Design</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-9.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Mini Ombre Herb Pots</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-10.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Indoor Painted Clay Pots</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-7.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+						<p class="fwdr3dcov-title pot">Flower Clay Pot Design</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-11.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title pot">Hand Painted Succulent Pot</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-12.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title pot">Chinese Water Bamboo</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+				<ul>
+					<li data-rl-src="link:https://webdesign-flash.ro" data-rl-target="_blank"></li>
+					<li data-thumb-src="media/thumbnails/pot-13.png"></li>
+					<li data-thumb-caption="" data-thumb-caption-offset="70">
+					<p class="fwdr3dcov-title pot">Zamioculcas zamiifolia grow tall</p>
+						<p class="fwdr3dcov-desc pot">Be Creative!<br><a href="https://webdesign-flash.ro" target="_blank">Buy this pot</a></p>
+					</li>
+				</ul>
+
+			</div>
+			<!-- end  -->
+			
+		</div>
+
+		<!-- HTML content  -->
+		<div id="html_content" style="display:none">
+			<div class="fwdrl-html-content">
+				<div>
+					<img src="media/images/post.png" width="197" height="162"/>
+					<h1>Sign Up For Our News Letter</h1>
+					<p>Subscribe to join the greatest mailing list.<br>Want to keep up to date with all our last news and information?<br>Enter your email bellow to be added to our mailing list.</p>
+					<input type="text" placeholder="Enter Your Email"></input>
+					<h4>SUBSCRIBE NOW</h4>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
+
+
+
+
