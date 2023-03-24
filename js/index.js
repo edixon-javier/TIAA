@@ -4,53 +4,24 @@
 // > Data
 const data = [
   {
-    thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01001213_RND.png",
-    thumbVideoSrc: "TIAA_1-PlanFocus_v09_DEL.mp4",
-    title: "Institutional Platforms Reimagined",
-    desc: "Reimagined Plan Sponsor and Consultant experiences to improve quality, reduce administrative time, and optimize business",
-  },
-  {
-    thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01035317_RND.png",
-    thumbVideoSrc: "TIAA_2-Web-Mobile_v07_DEL.mp4",
-    title: "Participant Experiences Reimagined",
-    desc: "Reimagined Web and Mobile experiences to provide delightful and transformational omni-channel experiences that engage and support participants through their life journey and help them achieve their retirement goals",
-  },
-  {
-    thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01070317_RND.png",
+    thumbSrc: "placeholder.svg",
     thumbVideoSrc: "TIAA_4-GoogleAI_v11_DEL.mp4",
-    title: "Customer Servicing Reimagined",
-    desc: "Strategic Partnerships and AI-driven platforms to provide a best-in-class customer servicing experience",
+    title: "Title",
+    desc: "Description",
   },
   {
     thumbSrc: "placeholder.svg",
     title: "Title",
     desc: "Description",
     externalUrl:
-      "https://vision.tiaa.org/public/vista/getontrack/calculator/start",
+      "https://demos.tiaa.org/invision/savi",
   },
   {
-    thumbSrc: "TIAA_0-Forum2023-LOOP_PLAYALL_RND.png",
-    thumbVideoSrc: "TIAA_0-Forum2023-LOOP_DEL.mp4",
-    title: "Reimagined TIAA Retirement Technology",
-    desc: "The next generation of transformative changes coming soon to the platforms and technology that support retirement",
-  },
-  {
-    thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01043014_RND.png",
-    thumbVideoSrc: "TIAA_3-Gateway_v07_DEL.mp4",
-    title: "Retirement Gateway",
-    desc: "The next-generation engine that enables extended integration and external interconnectivity, for a fully digital retirement offering ecosystem",
-  },
-  {
-    thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01074603_RND.png",
-    thumbVideoSrc: "TIAA_5-MFABB_v11_DEL.mp4",
-    title: "Next Generation Digital Security and Identity",
-    desc: "The next generation of digital security includes state-of-the-art tools for multi factor authentication, biometrics, and device binding",
-  },
-  {
-    thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01083623_RND.png",
-    thumbVideoSrc: "TIAA_6-Awards_v01_DEL.mp4",
-    title: "TIAA Accolades",
-    desc: "TIAA has been recognized as a game-changer and leader in the retirement industry",
+    thumbSrc: "placeholder.svg",
+    title: "Title",
+    desc: "Description",
+    externalUrl:
+      "https://tiaa.invisionapp.com/console/share/94PY2S38C6Z",
   },
 ];
 
@@ -411,7 +382,8 @@ addEventListener("click", (event) => {
   const isVideo = event.target?.tagName.toLowerCase() === "video";
 
   // > Is thumb a link?
-  var modal = document.getElementById("modalWindow");
+  const modal = document.getElementById("modalWindow");
+  const iframUrl = document.getElementById("iframe");
   if (
     event.target?.className == "close" ||
     event.target?.className == "modal"
@@ -422,8 +394,9 @@ addEventListener("click", (event) => {
   const externalUrl = window["fwdr3dcov0"]
     ? data[fwdr3dcov0.getCurrentThumbId()]?.externalUrl
     : null;
-  if (isMainThumbnail && externalUrl) {
-    modal.style.display = "block";
+    if (isMainThumbnail && externalUrl) {
+      iframUrl.src = externalUrl;
+      modal.style.display = "block";
     return;
   }
 
